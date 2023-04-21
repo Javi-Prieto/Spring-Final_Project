@@ -1,8 +1,13 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,4 +27,8 @@ public class ClassTrainer {
 	private String nombre, apellidos, dni, cuentaBanco, numTelefono;
 	private double salario, dineroExtra;
 	private int experiencia;
+	
+	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
+	@Builder.Default
+	private List<Room> salas = new ArrayList<>();
 }

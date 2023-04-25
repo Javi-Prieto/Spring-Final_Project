@@ -1,0 +1,46 @@
+a{
+    font-size: large!important;
+}
+li{
+    text-align: center!important;
+}
+#vip{
+    color: goldenrod;
+    font-size: larger!important;
+}
+h1{
+    font-size: 70px;
+    color: #630000;
+    text-shadow: 0px 7px 0px 0px #FFFFFF40 ;
+    text-shadow: 0px 4px 4px #000000;
+    font-weight: bold;
+}
+#container{
+    top: 55%!important;
+}
+i{
+    font-size: 30px;
+    color: white;
+}
+hr{
+    color: white;
+}
+
+#butSub{
+    width: 50%;
+    background-color: rgb(113, 0, 0);
+    background-image: linear-gradient(180deg, rgba(113,0,0,1) 0%, rgba(121,57,9,1) 22%, rgba(255,220,0,1) 100%);
+    font-weight: bold;
+}
+#butSub>span{
+    font-size: 12px;
+}
+#user{
+    left: 90%;
+}
+table>tbody>tr>td:hover>div>div{
+    background-color: #00000050;
+    opacity: 100%!important;
+    color: white;
+    transition: all 0.3s;
+}

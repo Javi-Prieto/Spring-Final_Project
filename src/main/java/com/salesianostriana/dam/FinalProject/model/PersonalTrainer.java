@@ -19,7 +19,7 @@ public class PersonalTrainer {
 	@GeneratedValue
 	private Long codTrabajador;
 	
-	private String nombre, apellidos, dni, cuentaBanco, numTelefono, titulo;
+	private String nombre, apellidos, dni, cuentaBanco, numTelefono, titulo, urlImg;
 	private double salario;
 	private int experiencia;
 }

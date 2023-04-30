@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +8,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <style>
+        main{
+            background-image: url(../static/img/VSHD_Design1.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            font-size: 24px;
+        }
+        main>section:first-of-type{
+            background-color: #FFC700;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            
+        }
+        h1{
+            font-size: 130px;
+        }
+        span{
+            font-size: 32px;
+            font-weight: bold;
+        }
+        #boton>a{
+            font-weight: bold;
+        }
+        
+    </style>
 </head>
 <body class="bg-black">
     <nav class="navbar navbar-expand bg-dark navbar-dark bg-opacity-10 p-0" >
@@ -36,26 +60,26 @@
             </a>
         </div>
     </nav>
-    <hr class="m-0"/>
-    <main class="m-auto min-vh-100">
-        <section class="mt-5 ">
-            <table class="table-borderless m-auto w-75">
-                <tbody>
-                    <tr>
-                        <td th:each="trainer : ${CTrainerList}">
-                            <div class="card">
-                                <img class="card-img-top" src="https://img.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg" alt="Card image">
-                                <div class="card-img-overlay text-center txt-image opacity-0">
-                                    <h4 class="card-title" th:text="${CTrainerList.nombre}">John Doe</h4>
-                                    <p class="card-text" th:text="${CTrainerList.descripcion}">Some example text.</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-                
-            </table>
+    <hr class="m-1" />
+    <main class="min-vh-100">
+        <section class="w-50 h-100 opacity-75 overflow-hidden">
+            <div class="opacity-100">
+                <h1 class="text-black">TRABAJO</h1>
+                <h1 class="text-light">ESFUERZO</h1>
+                <h1 class="text-black">CONSTANCIA</h1>
+                <p class="text-center text-light w-50 m-0 m-auto">
+                    <span class="text-black">RESERVA YA</span> <br />
+                    en nuestra sala de musculación contamos con las mejores máquinas, discos calibrados, racks de competición, profesionales dedicados,...
+                </p>
+                <h1 class="text-black">MOTIVACIÓN</h1>
+                <h1 class="text-light">ESFUERZO</h1>
+            </div>
+            
         </section>
+        <section class="position-static m-auto text-center" id="boton">
+            <a href="#" class=" btn border-2 border border-black rounded-0 shadow" id="cont">RESERVAR</a>
+        </section>
+        
     </main>
     <footer class="bg-dark text-center text-white">
         <div class="container p-4">
@@ -85,6 +109,8 @@
         © 2023 Copyright:
         <a class="text-white" href="">Javier Prieto Ortiz</a>
         </div>
-    </footer>
+      </footer>
+    
+    
 </body>
 </html>

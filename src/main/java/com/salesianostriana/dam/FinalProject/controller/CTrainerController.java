@@ -20,7 +20,7 @@ public class CTrainerController {
 	@Autowired
 	private CTrainerService service;
 	
-	@GetMapping("/CtrainerList")
+	@GetMapping("/Ctrainer")
 	public String showCTrainer(Model model) {
 		model.addAttribute("CTrainerList", service.findAll());
 		

@@ -23,7 +23,7 @@
             <h1 class="m-auto text-center text-warning">NUEVO ENTRENADOR</h1>
         </section>
         <section class="pt-5">
-            <form action="" class="w-75 m-auto bg-light rounded border row d-grid">
+            <form action="POST" class="w-75 m-auto bg-light rounded border row d-grid"  th:action="${cTrainerForm.id != 0} ? @{/admin/edit/CTrainerForm/submit} : @{/admin/add/CTrainerForm/submit}" th:object="${cTrainerForm}" method="post">
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">

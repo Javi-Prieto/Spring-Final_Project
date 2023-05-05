@@ -20,6 +20,8 @@ public class CTrainerController {
 	@Autowired
 	private CTrainerService service;
 	
+	
+	
 	@GetMapping("/Ctrainer")
 	public String showCTrainer(Model model) {
 		model.addAttribute("CTrainerList", service.findAll());
@@ -54,7 +56,7 @@ public class CTrainerController {
 		Optional<ClassTrainer> forEdit = service.findById(codTrab);
 		
 		if(forEdit.isPresent()) {
-			model.addAttribute("CTrainerForm", forEdit.get());
+			model.addAttribute("cTrainerForm", forEdit.get());
 			
 			return "TrainerForm";
 		}else {

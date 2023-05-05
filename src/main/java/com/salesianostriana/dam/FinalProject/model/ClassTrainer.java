@@ -25,7 +25,7 @@ public class ClassTrainer {
 	private Long codTrabajador;
 	
 	private String nombre, apellidos, dni, cuentaBanco, numTelefono, urlImg;
-	private double salario, dineroExtra;
+	private double salario;
 	private int experiencia;
 	
 	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)

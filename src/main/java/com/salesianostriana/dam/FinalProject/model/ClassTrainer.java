@@ -24,7 +24,7 @@ public class ClassTrainer {
 	@GeneratedValue
 	private Long codTrabajador;
 	
-	private String nombre, apellidos, dni, cuentaBanco, numTelefono, urlImg;
+	private String nombre, email, desc, apellidos, dni, cuentaBanco, numTelefono, urlImg;
 	private double salario;
 	private int experiencia;
 	

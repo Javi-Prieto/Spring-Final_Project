@@ -22,14 +22,14 @@ public class CTrainerController {
 	
 	
 	
-	@GetMapping("/Ctrainer")
+	@GetMapping("/ctrainerlist")
 	public String showCTrainer(Model model) {
 		model.addAttribute("CTrainerList", service.findAll());
 		
 		return "CTrainer";
 	}
 	
-	@GetMapping("/admin/CtrainerList")
+	@GetMapping("/admin/ctrainerlist")
 	public String showAdminCTrainer(Model model) {
 		model.addAttribute("CTrainerList", service.findAll());
 		
@@ -37,21 +37,21 @@ public class CTrainerController {
 	}
 	
 	
-	@GetMapping("/admin/add/CTrainerForm")
+	@GetMapping("/admin/add/ctrainerform")
 	public String showCTrainerAddForm(Model model) {
 		ClassTrainer cTrainer = new ClassTrainer();
 		model.addAttribute("cTrainerForm", cTrainer);
 		return "TrainerForm";
 	}
 	
-	@PostMapping("/admin/add/CTrainerForm/submit")
+	@PostMapping("/admin/add/ctrainerform/submit")
 	public String submitAddForm(@ModelAttribute("cTrainerForm") ClassTrainer cTrainer, Model model) {
-		model.addAttribute("CTrainer", cTrainer);
+		service.save(cTrainer);
 		
-		return "redirect:/admin/CtrainerList";
+		return "redirect:/admin/ctrainerlist";
 	}
 	
-	@GetMapping("/admin/edit/CTrainerForm/{codTrabajador}")
+	@GetMapping("/admin/edit/ctrainerform/{codTrabajador}")
 	public String showCTrainerEditForm(@PathVariable("codTrabajador") Long codTrab, Model model) {
 		Optional<ClassTrainer> forEdit = service.findById(codTrab);
 		
@@ -60,14 +60,20 @@ public class CTrainerController {
 			
 			return "TrainerForm";
 		}else {
-			return "redirect:/admin/CTrainerList";
+			return "redirect:/admin/ctrainerlist";
 		}
 	
 	}
-	@PostMapping("/admin/edit/CTrainerForm/submit")
+	@PostMapping("/admin/edit/ctrainerform/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("cTrainerForm") ClassTrainer a) {
 		service.edit(a);
-		return "redirect:/admin/CTrainerList";
+		return "redirect:/admin/ctrainerlist";
+	}
+	
+	@GetMapping("/admin/delete/ctrainer/{codTrabajador}")
+	public String deleteCTrainer(@PathVariable("codTrabajador") long id) {
+		service.deleteById(id);
+		return "redirect:/admin/ctrainerlist";
 	}
 	
 }

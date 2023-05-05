@@ -20,6 +20,6 @@ public class PersonalTrainer {
 	private Long codTrabajador;
 	
 	private String nombre, apellidos, dni, cuentaBanco, numTelefono, titulo, urlImg;
-	private double salario;
+	private double precioMensual;
 	private int experiencia;
 }

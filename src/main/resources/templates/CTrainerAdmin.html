@@ -35,8 +35,8 @@
         <section class="mt-1 ">
             <table class="table-borderless m-auto w-75">
                 <tbody>
-                    <tr>
-                        <td th:each="trainer : ${CTrainerList}">
+                    <tr "cols-4">
+                        <td th:each="trainer : ${CTrainerList}" class="col">
                             <div class="card">
                                 <img class="card-img-top" th:src="${trainer.urlImg}" alt="Card image">
                                 <div class="card-img-overlay text-center txt-image opacity-0">

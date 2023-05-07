@@ -43,7 +43,7 @@
                                     <h4 class="card-title" th:text="${trainer.nombre}">John Doe</h4>
                                     <p class="card-text" th:text="${trainer.desc}">Some example text.</p>
                                     <div>
-                                        <a th:href="@{/admin/edit/ctrainerForm/{codTrabajador}(codTrabajador = ${trainer.codTrabajador} )}" class="card-link btn border-2 border border-black edit-delt" ><i class="bi bi-pencil-square"></i></a>
+                                        <a th:href="@{/admin/edit/ctrainerform/{codTrabajador}(codTrabajador = ${trainer.codTrabajador} )}" class="card-link btn border-2 border border-black edit-delt" ><i class="bi bi-pencil-square"></i></a>
                                         <a th:href="@{/admin/delete/ctrainer/{codTrabajador}(codTrabajador = ${trainer.codTrabajador} )}" class="card-link btn border-2 border border-black edit-delt" ><i class="bi bi-trash3"></i></a>
                                     </div>
                                 </div>

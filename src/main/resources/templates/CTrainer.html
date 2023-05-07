@@ -11,43 +11,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 <body class="bg-black">
-    <nav class="navbar navbar-expand bg-dark navbar-dark bg-opacity-10 p-0" >
-        <div class="container m-0 p-0">
-            <a class="navbar-brand p-0 m-0" href="portada.html">
-                <img src="../static/img/Logo1.png" alt="Bootstrap" width="100" height="100">
-            </a>
-        </div>
-        <div class=" container-fluid d-block opacity-100">
-            <ul class="navbar-nav justify-content-center p-0">
-                <li class="nav-item text-center">
-                    <a href="CTrainer.html" class="nav-link pe-5 ps-5">Monitores</a>
-                </li>
-                <li class="nav-item ">
-                    <a href="Sala.html" class="nav-link pe-5  ps-5">Sala</a>
-                </li>
-                <li class="nav-item ">
-                    <a href="PTrainer.html" class="nav-link pe-5 ps-5">Entrenadores</a>
-                </li>
-            </ul>
-        </div>
-        <div class=" m-0 p-0 w-100 align-content-end d-grid flex-wrap " >
-            <a class="p-0 m-0 align-content-end d-grid position-relative" href="User.html" id="user">
-                <i class="bi bi-person-circle"></i>
-            </a>
-        </div>
-    </nav>
+    <nav th:replace="~{fragments/navBar::navBar}"></nav>
     <hr class="m-0"/>
     <main class="m-auto min-vh-100">
         <section class="mt-5 ">
             <table class="table-borderless m-auto w-75">
                 <tbody>
-                    <tr>
-                        <td th:each="trainer : ${CTrainerList}">
+                    <tr class="cols-4">
+                        <td th:each="trainer : ${CTrainerList}" class="col">
                             <div class="card">
                                 <img class="card-img-top" src="https://img.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg" alt="Card image">
                                 <div class="card-img-overlay text-center txt-image opacity-0">
-                                    <h4 class="card-title" th:text="${CTrainerList.nombre}">John Doe</h4>
-                                    <p class="card-text" th:text="${CTrainerList.descripcion}">Some example text.</p>
+                                    <h4 class="card-title" th:text="${trainer.nombre}">John Doe</h4>
+                                    <p class="card-text" th:text="${trainer.descripcion}">Some example text.</p>
                                 </div>
                             </div>
                         </td>
@@ -57,34 +33,6 @@
             </table>
         </section>
     </main>
-    <footer class="bg-dark text-center text-white">
-        <div class="container p-4">
-    
-        <div class="">
-            <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!"><i class="bi bi-twitter"></i></a>
-            <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!"><i class="bi bi-instagram"></i></a>
-            <a class="btn btn-primary btn-floating m-1" style="background-color: #00ca3d" href="#!"><i class="bi bi-whatsapp"></i></a>
-            <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!"><i class="bi bi-github"></i></a>
-        </div>
-        <ul class="nav w-75 m-0 m-auto justify-content-around pt-5">
-            <li class="nav-item ">
-                <a href="portada.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a href="aboutUs.html" class="nav-link">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">Terms</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">Privacy Policy</a>
-            </li>
-        </ul>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2023 Copyright:
-        <a class="text-white" href="">Javier Prieto Ortiz</a>
-        </div>
-    </footer>
+    <footer  th:replace="~{fragments/footer::footer}"></footer>
 </body>
 </html>

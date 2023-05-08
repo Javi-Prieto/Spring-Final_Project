@@ -21,12 +21,14 @@ public class PTrainerController {
 	@GetMapping("/ptrainerlist")
 	public String showPtrainer(Model model) {
 		model.addAttribute("pTrainerList", service.findAll());
+		model.addAttribute("firstTrainer", service.findAll().get(0));
 		return "PTrainer";
 	}
 	
 	@GetMapping("/admin/ptrainerlist")
 	public String showAdminPtrainer(Model model) {
 		model.addAttribute("pTrainerList", service.findAll());
+		model.addAttribute("firstTrainer", service.findAll().get(0));
 		return"PTrainerAdmin";
 	}
 	@GetMapping("/admin/add/ptrainer")

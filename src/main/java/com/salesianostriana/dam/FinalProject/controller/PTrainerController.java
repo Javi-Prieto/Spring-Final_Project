@@ -51,9 +51,9 @@ public class PTrainerController {
 		
 		if(forEdit.isPresent()) {
 			model.addAttribute("pTrainerForm", forEdit.get());
-			return "TrainerForm";
+			return "PTrainerForm";
 		}else {
-			return "redirect:/admin/ctrainerlist";
+			return "redirect:/admin/ptrainerlist";
 		}
 	
 	}

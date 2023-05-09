@@ -45,7 +45,7 @@ public class CTrainerController {
 	}
 	
 	@PostMapping("/admin/add/ctrainerform/submit")
-	public String submitAddForm(@ModelAttribute("cTrainerForm") ClassTrainer cTrainer, Model model) {
+	public String submitAddForm(@ModelAttribute("cTrainerForm") ClassTrainer cTrainer) {
 		service.save(cTrainer);
 		
 		return "redirect:/admin/ctrainerlist";
@@ -57,7 +57,6 @@ public class CTrainerController {
 		
 		if(forEdit.isPresent()) {
 			model.addAttribute("cTrainerForm", forEdit.get());
-			
 			return "TrainerForm";
 		}else {
 			return "redirect:/admin/ctrainerlist";

@@ -34,7 +34,7 @@ hr{
 #user{
     left: 90%;
 }
-table>tbody>tr>td:hover>div>div{
+.ctrainer:hover>div>div{
     background-color: #00000050;
     opacity: 100%!important;
     color: white;

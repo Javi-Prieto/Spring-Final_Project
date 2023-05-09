@@ -33,10 +33,8 @@
             <a th:href="@{/admin/add/ctrainerform}" class=" btn border edit-delt" ><i class="bi bi-plus-square"></i></a>
         </section>
         <section class="mt-1 ">
-            <table class="table-borderless m-auto w-75">
-                <tbody>
-                    <tr "cols-4">
-                        <td th:each="trainer : ${CTrainerList}" class="col">
+            <div class="row m-auto w-75">
+                        <div th:each="trainer : ${CTrainerList}" class=" col-4 ctrainer mt-1">
                             <div class="card">
                                 <img class="card-img-top" th:src="${trainer.urlImg}" alt="Card image">
                                 <div class="card-img-overlay text-center txt-image opacity-0">
@@ -48,11 +46,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                </tbody>
-                
-            </table>
+                        </div>
+            </div>
         </section>
     </main>
     <footer  th:replace="~{fragments/footer::footer}"></footer>

@@ -15,7 +15,7 @@
     <hr class="m-0"/>
     <main class="m-auto min-vh-100">
         <section class="mt-5 ">
-            <table class="table-borderless m-auto w-75">
+            <!--<table class="table-borderless m-auto w-75">
                 <tbody>
                     <tr class="cols-4">
                         <td th:each="trainer : ${CTrainerList}" class="col">
@@ -30,7 +30,18 @@
                     </tr>
                 </tbody>
                 
-            </table>
+            </table>-->
+            <div class="row d-flex flex-wrap">
+				<div class="col-md-4 ">
+					<div th:each="trainer : ${CTrainerList}" class="card">
+                                <img class="card-img-top" src="https://img.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg" alt="Card image">
+                                <div class="card-img-overlay text-center txt-image opacity-0">
+                                    <h4 class="card-title" th:text="${trainer.nombre}">John Doe</h4>
+                                    <p class="card-text" th:text="${trainer.descripcion}">Some example text.</p>
+                                </div>
+                            </div th:each="trainer : ${CTrainerList}">
+				</div>
+			</div>
         </section>
     </main>
     <footer  th:replace="~{fragments/footer::footer}"></footer>

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +25,9 @@ public class ClassTrainer {
 	@GeneratedValue
 	private Long codTrabajador;
 	
-	private String nombre, email, desc, apellidos, dni, cuentaBanco, numTelefono, urlImg;
+	private String nombre, email, apellidos, dni, cuentaBanco, numTelefono;
+	@Lob
+	private String desc, urlImg;
 	private double salario;
 	private int experiencia;
 	

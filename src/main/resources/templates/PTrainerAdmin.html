@@ -55,36 +55,40 @@
           </div>
         </div>
         <div class="m-auto w-75 mb-5">
-            <div id="carouselExample" class="carousel slide m-auto">
-                <div class="carousel-inner w-75 m-0 m-auto">
-					<div class="carousel-item active" >
-                    <div class="card m-auto" style="width: 18rem;">
-                        <img class="card-img-top" src="https://e0.pxfuel.com/wallpapers/434/198/desktop-wallpaper-cbum-cbum-thumbnail.jpg" alt="Card image">
-                                <div class="card-img-overlay text-center txt-image opacity-100 mt-5">
-                                    <h4 class="card-title text-warning mt-5 fw-bold" >ENTRENADORES</h4>
-                                </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item " th:each="trainer : ${pTrainerList}">
-                    <div class="card m-auto" style="width: 18rem;">
-                        <img th:src="${trainer.urlImg}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title" th:text="${trainer.nombre}"></h5>
-                          <p class="card-text" th:text="${trainer.apellidos}"></p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-	                        <li class="list-group-item">Años de experiencia: <span th:text="${trainer.experiencia}"></span></li>
-	                        <li class="list-group-item">Valoración: <span class="" th:each="num : ${trainer.valoracion}">⭐</span></li>
-	                        <li class="list-group-item">Precio Mensual: <span th:text="${trainer.precioMensual}"></span></li>
-                        </ul>
-                        <div class="card-body">
-                          <a th:href="@{/admin/edit/ptrainerform/{codTrabajador}(codTrabajador = ${trainer.codTrabajador})}" class="card-link btn border-2 border border-black edit-delt" ><i class="bi bi-pencil-square"></i></a>
-                          <a th:href="@{/admin/delete/ptrainer/{codTrabajador}(codTrabajador = ${trainer.codTrabajador})}" class="card-link btn border-2 border border-black edit-delt"  ><i class="bi bi-trash3"></i></a>
-                        </div>
-                    </div>
-                  </div>
-               
-                </div>
+			<div id="carouselExample" class="carousel slide m-auto">
+				<div class="carousel-inner w-75 m-0 m-auto">
+					<div class="carousel-item active">
+						<div class="card m-auto" style="width: 18rem;">
+							<img class="card-img-top"
+								src="https://e0.pxfuel.com/wallpapers/434/198/desktop-wallpaper-cbum-cbum-thumbnail.jpg"
+								alt="Card image">
+							<div class="card-img-overlay text-center txt-image opacity-100 mt-5">
+								<h4 class="card-title text-warning mt-5 fw-bold">ENTRENADORES</h4>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item " th:each="trainer : ${pTrainerList}">
+						<div class="card m-auto" style="width: 18rem;">
+							<img th:src="${trainer.urlImg}" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${trainer.nombre}"></h5>
+								<p class="card-text" th:text="${trainer.apellidos}"></p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Años de experiencia: <span th:text="${trainer.experiencia}"></span></li>
+								<li class="list-group-item">Valoración: <span th:text="trainer.valoracion">⭐</span></li>
+								<li class="list-group-item">Precio Mensual: <span th:text="${trainer.precioMensual}"></span></li>
+							</ul>
+							<div class="card-body">
+								<a th:href="@{/admin/edit/ptrainerform/{codTrabajador}(codTrabajador = ${trainer.codTrabajador})}"
+									class="card-link btn border-2 border border-black edit-delt"><i
+										class="bi bi-pencil-square"></i></a>
+								<a th:href="@{/admin/delete/ptrainer/{codTrabajador}(codTrabajador = ${trainer.codTrabajador})}"
+									class="card-link btn border-2 border border-black edit-delt"><i class="bi bi-trash3"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>

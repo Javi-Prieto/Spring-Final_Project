@@ -31,9 +31,6 @@ hr{
 #butSub>span{
     font-size: 12px;
 }
-#user{
-    left: 90%;
-}
 .ctrainer:hover>div>div{
     background-color: #00000050;
     opacity: 100%!important;

@@ -46,21 +46,22 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
-			.antMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
-			.antMatchers("/admin/**").hasRole("ADMIN")
-			.anyRequest().authenticated()
-			.and()
-		.formLogin()
-			.loginPage("/login")
-			.permitAll();
-		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
-		
-		return http.build();
-	}
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+        .authorizeRequests()
+            .antMatchers("/css/","/js/","/webjars/", "/h2-console/").permitAll()
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .anyRequest().permitAll()
+            .and()
+        .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/")
+            .permitAll();
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
+        return http.build();
+    }
 
 }

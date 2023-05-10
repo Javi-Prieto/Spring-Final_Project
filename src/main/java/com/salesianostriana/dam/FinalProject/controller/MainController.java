@@ -9,4 +9,8 @@ public class MainController {
 	public String showIndex() {
 		return "portada";
 	}
+	@GetMapping("/login")
+	public String showLogIn() {
+		return "logIn";
+	}
 }

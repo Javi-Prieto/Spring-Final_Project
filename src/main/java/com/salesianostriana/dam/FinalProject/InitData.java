@@ -25,7 +25,7 @@ public class InitData {
 		Client usuario = Client.builder()
 				.admin(false)
 				.username("user")
-				.password(passwordEncoder.encode("user"))
+				.password(passwordEncoder.encode("1234"))
 				.bpReps(0)
 				.bpWeigh(0)
 				.sqReps(0)

@@ -11,6 +11,9 @@
         </div>
         <div class=" container-fluid d-block opacity-100">
             <ul class="navbar-nav justify-content-center p-0">
+				<li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/admin/ctrainerlist}"class="nav-link pe-5 ps-5">Monitores Admin</a>
+                </li>
                 <li class="nav-item text-center">
                     <a th:href="@{/ctrainerlist}"class="nav-link pe-5 ps-5">Monitores</a>
                 </li>
@@ -19,6 +22,9 @@
                 </li>
                 <li class="nav-item ">
                     <a th:href="@{/ptrainerlist}" class="nav-link pe-5 ps-5">Entrenadores</a>
+                </li>
+                <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/admin/ctrainerlist}"class="nav-link pe-5 ps-5">Entrenadores Admin</a>
                 </li>
             </ul>
         </div>

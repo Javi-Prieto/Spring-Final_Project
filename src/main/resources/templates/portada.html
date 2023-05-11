@@ -25,6 +25,9 @@
         <nav class="navbar navbar-expand bg-dark navbar-dark bg-opacity-10 p-0" >
             <div class=" container-fluid d-block opacity-100">
                 <ul class="navbar-nav justify-content-center ">
+					<li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    	<a th:href="@{/admin/ctrainerlist}"class="nav-link pe-5 ps-5">Monitores Admin</a>
+                	</li>
                     <li class="nav-item text-center">
                         <a th:href="@{/ctrainerlist}" class="nav-link pe-5 ps-5">Monitores</a>
                     </li>
@@ -34,6 +37,9 @@
                     <li class="nav-item ">
                         <a th:href="@{/ptrainerlist}" class="nav-link pe-5 ps-5">Entrenadores</a>
                     </li>
+                    <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    	<a th:href="@{/admin/ctrainerlist}"class="nav-link pe-5 ps-5">Entrenadores Admin</a>
+               		</li>
                 </ul>
             </div>
         </nav>
@@ -44,11 +50,11 @@
             <div class="text-center position-absolute start-50 translate-middle" id="container">
                 <br class="mt-5">
                 <h1 class="mt-5">ONI'S TEMPLE</h1>
-                <a href="registerForm.html" class="btn btn-lg mt-5 border-black" id="butSub">
+                <a href="registerForm.html" class="btn btn-lg mt-5 border-black" id="butSub" sec:authorize="!isAuthenticated()">
                     INSCRÍBETE
                     <span class="text-white"><br> tan solo 32.99</span>
                 </a>
-                <p class="text-light">O si ya estas inscrito<a th:href="@{/login}">Inicia Sesión</a></p>
+                <p class="text-light" sec:authorize="!isAuthenticated()">O si ya estas inscrito<a th:href="@{/login}">Inicia Sesión</a></p>
             </div>
         </main>
     </div>

@@ -32,7 +32,7 @@ hr{
     font-size: 12px;
 }
 .ctrainer:hover>div>div{
-    background-color: #00000050;
+    background-color: #00000085;
     opacity: 100%!important;
     color: white;
     transition: all 0.3s;

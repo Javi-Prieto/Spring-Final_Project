@@ -58,12 +58,10 @@ public class SecurityConfig {
             .defaultSuccessUrl("/")
             .permitAll()
             .and()
-         .logout()
-	         .logoutUrl("/logout") 
-	         .logoutSuccessUrl("/login?logout")
-	         .invalidateHttpSession(true)
-	         .deleteCookies("JSESSIONID")
-	         .permitAll();
+        .logout()
+        	.logoutUrl("/logout")
+        	.logoutSuccessUrl("/")
+        	.permitAll();
 
         http.csrf().disable();
         http.headers().frameOptions().disable();

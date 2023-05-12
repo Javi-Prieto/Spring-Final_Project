@@ -2,30 +2,18 @@ package com.salesianostriana.dam.FinalProject.service;
 
 
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.FinalProject.model.ClassTrainer;
 import com.salesianostriana.dam.FinalProject.repositories.CTrainerRepository;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.salesianostriana.dam.FinalProject.servicebase.BaseServiceImp;
 
 @Service
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class CTrainerService {
+
+public class CTrainerService 
+	extends BaseServiceImp<ClassTrainer, Long, CTrainerRepository>{
 	
-	@Autowired
-	private CTrainerRepository repo;
 	
-	public List<ClassTrainer> getLista(){
-		return repo.findAll();
-	}
+	
+	
 }

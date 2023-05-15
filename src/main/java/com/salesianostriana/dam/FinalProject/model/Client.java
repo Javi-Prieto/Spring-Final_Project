@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +32,9 @@ public class Client implements UserDetails {
 	private double cuotaMens = 32.99;
 	private int alturaCm, peso, edad, sqWeight, bpWeigh, dlWeight, sqReps, bpReps, dlReps;
 	private boolean admin = false;
+	
+	@OneToOne(mappedBy = "cliente", optional = true)
+	private Hire hirePtrainer;
 	
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.FinalProject.model.Hire;
 import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
 import com.salesianostriana.dam.FinalProject.service.PTrainerService;
 
@@ -32,6 +33,8 @@ public class PTrainerController {
 	@GetMapping("/admin/add/ptrainer")
 	public String showPTrainerAddForm(Model model) {
 		PersonalTrainer pTrainer = new PersonalTrainer();
+		Hire newHire = new Hire();
+		model.addAttribute("newHire", newHire);
 		model.addAttribute("pTrainerForm", pTrainer);
 		return "PTrainerForm";
 	}

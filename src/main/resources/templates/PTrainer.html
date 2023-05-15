@@ -55,8 +55,13 @@
 							<li class="list-group-item">Valoración: <span class="" th:text="${trainer.valoracion}">⭐</span></li>
 							<li class="list-group-item">Precio Mensual: <span th:text="${trainer.precioMensual}"></span></li>
 						</ul>
-						<div class="card-body">
-							<a href="#" class="card-link btn border-2 border border-black " id="cont">Contratar</a>
+						<div class="card-body" sec:authorize="isAuthenticated()">
+							<form th:action="@{/hirePTrainer}" method="post" id="hirePt" th:object="${newHire}">
+								<input type="hidden" th:field="*{trainer}" th:value="${trainer}" name="trainer" />
+								<input type="hidden" th:field="*{client}" th:value="${#authetication.name}" name="client" />
+								<button type="submit" class="card-link btn border-2 border border-black " id="cont">Contratar</button>
+							</form>
+							
 						</div>
 					</div>
 				</div>

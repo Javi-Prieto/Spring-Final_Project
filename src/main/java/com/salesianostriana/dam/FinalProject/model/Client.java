@@ -29,9 +29,8 @@ public class Client implements UserDetails {
 	
 	private String dni, codPostal, cuentaBanco, email, numTelefono, password, username; 
 	private double cuotaMens = 32.99;
-	private int sqWeight = 0, bpWeigh = 0, dlWeight = 0, sqReps = 0, bpReps = 0
-			, dlReps = 0;
-	private boolean admin;
+	private int alturaCm, peso, edad, sqWeight, bpWeigh, dlWeight, sqReps, bpReps, dlReps;
+	private boolean admin = false;
 	
 	
 	

@@ -55,7 +55,7 @@
 				<div class="text-center position-absolute start-50 translate-middle rounded" id="container">
 	                <br class="mt-5">
 	                <h1 class="mt-5">ONI'S TEMPLE</h1>
-	                <a href="registerForm.html" class="btn btn-lg mt-5 border-black" id="butSub" sec:authorize="!isAuthenticated()">
+	                <a th:href="@{/register}" class="btn btn-lg mt-5 border-black" id="butSub" sec:authorize="!isAuthenticated()">
 	                    INSCRÍBETE
 	                    <span class="text-white"><br> tan solo 32.99</span>
 	                </a>

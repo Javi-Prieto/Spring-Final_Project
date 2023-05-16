@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.FinalProject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,5 +34,23 @@ public class ClientController {
 		cliente.setPassword(passwordEncoder.encode(cliente.getPassword()));
 		servicio.save(cliente);
 		return "redirect:/";
+	}
+	
+	@GetMapping("/mypage")
+	public String showMyPage() {
+		return "User";
+	}
+	
+	@GetMapping("/mypage/hirereserve")
+	public String showMyHiresReserves(Model model, @AuthenticationPrincipal Client client) {
+		
+		if(client.getHirePtrainer() != null) {
+			model.addAttribute("trainer", client.getHirePtrainer().getTrainer());
+			model.addAttribute("hire", client.getHirePtrainer());
+			return "HireReserve";
+		}else {
+			return "HireReserve";
+		}
+		
 	}
 }

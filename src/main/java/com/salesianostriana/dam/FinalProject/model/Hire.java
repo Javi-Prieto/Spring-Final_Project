@@ -31,6 +31,9 @@ public class Hire {
 	
 	private LocalDate finishHire;
 	
+	@OneToOne
+	private Planning plan;
+	
 	
 	
 }

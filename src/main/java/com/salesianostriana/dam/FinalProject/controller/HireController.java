@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.FinalProject.model.Client;
 import com.salesianostriana.dam.FinalProject.model.Hire;
 import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
-import com.salesianostriana.dam.FinalProject.service.ClientService;
 import com.salesianostriana.dam.FinalProject.service.HireService;
 import com.salesianostriana.dam.FinalProject.service.PTrainerService;
 

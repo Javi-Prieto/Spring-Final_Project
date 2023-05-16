@@ -32,11 +32,5 @@ public class Hire {
 	private LocalDate finishHire;
 	
 	
-	public Hire(Client cliente, PersonalTrainer trainer) {
-		this.cliente = cliente;
-		this.trainer = trainer;
-		this.startHire = LocalDate.now();
-		this.finishHire = startHire.plusMonths(1);
-	}
 	
 }

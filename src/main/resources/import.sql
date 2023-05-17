@@ -9,7 +9,7 @@ INSERT INTO class_trainer(cod_trabajador, apellidos, cuenta_banco, desc, dni, em
 
 --INSERT INTO client (cod_cliente, admin, bp_reps, bp_weigh, cod_postal, cuenta_banco, cuota_mens, dl_reps, dl_weight, dni, email, num_telefono, password, sq_reps, sq_weight, username) VALUES (1, true, 0, 0, '0', 'admin', 0, 0, 0, '0', 'admin@admin.com', '0', '$2a$10$Hrjm.SdjRa1nHY/Ax80HFOztBjS2P63shHhdI2dhmcYqYlfkd0SAy', 0, 0, 'admin'), (2, false, 0, 0, '0', 'user', 0, 0, 0, '0', 'user@user.com', '0', '$2a$10$Xq6ylBQPqWvdwPpOrqbq/e1kTGy1RCI/OYzknSeSgMk6RaEvHEl4G', 0, 0, 'user');
 
-
+INSERT INTO room (cod_sala , hora_fin , hora_inicio , limite_clientes) VALUES (1, NOW(), (NOW() +1), 1);
 
 
 

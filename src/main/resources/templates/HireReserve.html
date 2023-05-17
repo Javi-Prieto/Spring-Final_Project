@@ -28,7 +28,7 @@
 			        	<br /> Fecha contratación: <span th:text="${#temporals.format(hire.startHire)}"></span>
 			        	<br /> Fecha fin de contrato: <span th:text="${#temporals.format(hire.startHire)}"></span>
 			        </p>
-			        <p class="card-text"><a href="" class="btn btn-small btn-outline-warning">Planificación</a></p>
+			        <p class="card-text"><a th:href="@{/getPlaniPDF}" class="btn btn-small btn-outline-warning">Planificación</a></p>
 			      </div>
 			    </div>
 			  </div>

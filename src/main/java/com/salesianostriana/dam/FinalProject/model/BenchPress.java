@@ -1,8 +1,11 @@
 package com.salesianostriana.dam.FinalProject.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -18,11 +21,11 @@ import lombok.NoArgsConstructor;
 public class BenchPress {
 	@Id
 	@GeneratedValue
-	private Long id_bp;
+	private Long idBp;
 	
-	@Id
-	@OneToMany
-	private Client cliente;
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name = "fk_bp_client"))
+	private Client clienteB;
 	
 	private int kgs, reps;
 }

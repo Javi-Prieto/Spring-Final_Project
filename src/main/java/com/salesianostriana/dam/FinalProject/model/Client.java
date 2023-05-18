@@ -2,6 +2,7 @@ package com.salesianostriana.dam.FinalProject.model;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,18 +46,18 @@ public class Client implements UserDetails {
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="clienteB", fetch = FetchType.EAGER)
 	private List<BenchPress> benchpressList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
-	private List<Squat> squatList;
+	@OneToMany(mappedBy="clienteS", fetch = FetchType.EAGER)
+	private Set<Squat> squatList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
-	private List<Deadlift> deadliftList;
+	@OneToMany(mappedBy="clienteD", fetch = FetchType.EAGER)
+	private Set<Deadlift> deadliftList;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

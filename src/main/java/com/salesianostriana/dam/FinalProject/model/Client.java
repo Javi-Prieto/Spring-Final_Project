@@ -36,6 +36,8 @@ public class Client implements UserDetails {
 	@OneToOne(mappedBy = "cliente", optional = true)
 	private Hire hirePtrainer;
 	
+	@OneToOne(mappedBy = "cliente", optional = true)
+	private Reserve roomReserve;
 	
 	
 	

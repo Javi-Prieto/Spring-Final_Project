@@ -31,7 +31,7 @@ public class ClassTrainer {
 	private double salario;
 	private int experiencia;
 	
-	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
+	/*@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
 	@Builder.Default
-	private List<Room> salas = new ArrayList<>();
+	private List<Room> salas = new ArrayList<>();*/
 }

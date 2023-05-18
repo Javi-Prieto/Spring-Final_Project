@@ -38,6 +38,6 @@ public class HireController {
 			.edit(editP);
 		cliente.setHirePtrainer(h);
 		
-		return "redirect:/ptrainerlist";
+		return "redirect:/mypage/hirereserve";
 	}
 }

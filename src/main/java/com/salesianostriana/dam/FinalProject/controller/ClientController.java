@@ -57,8 +57,12 @@ public class ClientController {
 			return "HireReserve";
 		}
 		else {
+			model.addAttribute("reserve", null);
+			model.addAttribute("hire", null);
+			model.addAttribute("trainer", null);
 			return "HireReserve";
 		}
+		
 		
 	}
 	

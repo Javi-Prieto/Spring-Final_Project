@@ -52,7 +52,7 @@ public class ReserveController {
 	public String deleteReserve(@PathVariable("idRes")long idRes) {
 		if(service.findById(idRes).isPresent()){
 			service.deleteById(idRes);
-			return "HireReserve";
+			return "redirect:/mypage/hirereserve";
 		}else {
 			return "redirect:/mypage/hirereserve";
 		}

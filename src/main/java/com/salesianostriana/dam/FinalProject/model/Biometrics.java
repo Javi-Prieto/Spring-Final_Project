@@ -1,10 +1,9 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -17,14 +16,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BenchPress {
+public class Biometrics {
+
 	@Id
 	@GeneratedValue
-	private Long idBp;
+	private Long idBio;
 	
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "fk_bp_client"))
-	private Client clienteB;
+	private Client clienteF;
 	
-	private int kgs, reps;
+	private int heightCm, bw;
 }

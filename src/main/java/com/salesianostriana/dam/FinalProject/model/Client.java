@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,8 +37,10 @@ public class Client implements UserDetails {
 	
 	private String dni, codPostal, cuentaBanco, email, numTelefono, password, username; 
 	private double cuotaMens = 32.99;
-	private int alturaCm, peso, edad, sqWeight, bpWeigh, dlWeight, sqReps, bpReps, dlReps;
 	private boolean admin = false;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
+	private char gender;
 	
 	@OneToOne(mappedBy = "cliente", optional = true)
 	private Hire hirePtrainer;
@@ -58,6 +62,14 @@ public class Client implements UserDetails {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="clienteD", fetch = FetchType.EAGER)
 	private Set<Deadlift> deadliftList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy="clienteF", fetch = FetchType.EAGER)
+	private Set<Biometrics> bioList;
+	
+
+	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

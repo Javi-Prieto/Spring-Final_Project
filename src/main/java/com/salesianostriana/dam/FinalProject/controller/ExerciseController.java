@@ -3,6 +3,7 @@ package com.salesianostriana.dam.FinalProject.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.FinalProject.model.BenchPress;
+import com.salesianostriana.dam.FinalProject.model.Client;
 import com.salesianostriana.dam.FinalProject.model.Deadlift;
 import com.salesianostriana.dam.FinalProject.model.Squat;
 import com.salesianostriana.dam.FinalProject.service.BPService;
@@ -38,14 +40,15 @@ public class ExerciseController {
 	}
 	//BENCH
 	@GetMapping("/mypage/exercise/bench/add")
-	public String showAddBench(Model m) {
+	public String showAddBench(@AuthenticationPrincipal Client client,Model m) {
 		BenchPress benchForm = new BenchPress();
+		benchForm.setClienteB(client);
 		m.addAttribute("benchForm", benchForm);
 		return "BenchForm";
 	}
 	
 	@PostMapping("/mypage/exercise/bench/add/submit")
-	public String submitAddExercise(@ModelAttribute("benchForm") BenchPress b) {
+	public String submitAddExercise( @ModelAttribute("benchForm") BenchPress b) {
 		bService.save(b);
 		return "redirect:/mypage/exercise";
 	}
@@ -74,8 +77,9 @@ public class ExerciseController {
 	}
 	//SQUAT
 	@GetMapping("/mypage/exercise/squat/add")
-	public String showAddSquat(Model m) {
+	public String showAddSquat(@AuthenticationPrincipal Client client,Model m) {
 		Squat squatForm = new Squat();
+		squatForm.setClienteS(client);
 		m.addAttribute("squatForm", squatForm);
 		return "squatForm";
 	}
@@ -113,8 +117,9 @@ public class ExerciseController {
 	//DEADLIFT
 	
 	@GetMapping("/mypage/exercise/deadlift/add")
-	public String showAddDeadlift(Model m) {
+	public String showAddDeadlift(@AuthenticationPrincipal Client client,Model m) {
 		Deadlift dlForm = new Deadlift();
+		dlForm.setClienteD(client);
 		m.addAttribute("dlForm", dlForm);
 		return "dlForm";
 	}

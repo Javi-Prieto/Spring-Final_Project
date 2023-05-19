@@ -20,28 +20,28 @@
 <body>
     <main class="mt-5">
         <section>
-            <h1 class="m-auto text-center text-warning">MARCAS DE PESO MUERTO</h1>
+            <h1 class="m-auto text-center text-warning">PESO Y ALTURA</h1>
         </section>
         <section class="pt-5">
-            <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${dlForm.idDl != 0} ? @{/mypage/exercise/deadlift/edit/submit} : @{/mypage/exercise/deadlift/add/submit}" th:object="${dlForm}" method="post">
-                <input th:if="${dlForm.idDl != 0}" type="hidden" name="id" th:field="*{idDl}" />
-                <input th:if="${dlForm.idDl != 0}" type="hidden" name="id" th:field="*{clienteD}" />
+            <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${bioForm.idBio != 0} ? @{/mypage/biometrics/edit/submit} : @{/mypage/biometrics/add/submit}" th:object="${bioForm}" method="post">
+                <input th:if="${bioForm.idBio != 0}" type="hidden" name="id" th:field="*{idBio}" />
+                <input th:if="${bioForm.idBio != 0}" type="hidden" name="id" th:field="*{clienteF}" />
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">
-                            <label for="kgsD" class="col-form-label pe-1">Kilogramos: </label>
+                            <label for="bw" class="col-form-label pe-1">Peso en KiloGramos: </label>
                         </div>
                         <div class="col">
-                            <input type="number" name="kgsD" id="kgsD" th:field="*{kgs}" required class="form-control h-50">
+                            <input type="number" name="bw" id="bw" th:field="*{bw}" required class="form-control h-50" min="1">
                         </div>
                         
                     </div>
                     <div id="rigC" class="d-grid row">
                         <div class="col">
-                            <label for="repsD" class="col-form-label pe-1 p-0">Repeticiones Realizadas: </label>
+                            <label for="height" class="col-form-label pe-1 p-0">Estatura en Cm: </label>
                         </div>
                         <div class="col">
-                            <input type="number" name="repsD" id="repsD" th:field="*{reps}" required class="form-control h-50 ">
+                            <input type="number" name="height" id="height" th:field="*{heightCm}" required class="form-control h-50 " min="1">
                         </div>
                     </div>
                 </div>

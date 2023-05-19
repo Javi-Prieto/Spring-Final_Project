@@ -25,6 +25,7 @@
         <section class="pt-5">
             <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${squatForm.idSq != 0} ? @{/mypage/exercise/squat/edit/submit} : @{/mypage/exercise/squat/add/submit}" th:object="${squatForm}" method="post">
                 <input th:if="${squatForm.idSq != 0}" type="hidden" name="id" th:field="*{idSq}" />
+                <input th:if="${squatForm.idSq != 0}" type="hidden" name="id" th:field="*{clienteS}" />
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">

@@ -25,13 +25,14 @@
         <section class="pt-5">
             <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${benchForm.idBp != 0} ? @{/mypage/exercise/bench/edit/submit} : @{/mypage/exercise/bench/add/submit}" th:object="${benchForm}" method="post">
                 <input th:if="${benchForm.idBp != 0}" type="hidden" name="id" th:field="*{idBp}" />
+                <input th:if="${benchForm.idBp != 0}" type="hidden" name="id" th:field="*{clienteB}" />
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">
                             <label for="kgsB" class="col-form-label pe-1">Kilogramos: </label>
                         </div>
                         <div class="col">
-                            <input type="number" name="kgsB" id="kgsB" th:field="*{kgs}" required class="form-control h-50">
+                            <input type="number" name="kgsB" id="kgsB" th:field="*{kgs}" required class="form-control h-50" min="1">
                         </div>
                         
                     </div>
@@ -40,7 +41,7 @@
                             <label for="repsB" class="col-form-label pe-1 p-0">Repeticiones Realizadas: </label>
                         </div>
                         <div class="col">
-                            <input type="number" name="repsB" id="repsB" th:field="*{reps}" required class="form-control h-50 ">
+                            <input type="number" name="repsB" id="repsB" th:field="*{reps}" required class="form-control h-50 " min="1">
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ public class ClientController {
 	public String submitRegisterForm(@ModelAttribute("cliente") Client cliente) {
 		cliente.setPassword(passwordEncoder.encode(cliente.getPassword()));
 		servicio.save(cliente);
-		return "redirect:/mypage/hirereserve";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/mypage")

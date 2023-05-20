@@ -1,11 +1,15 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +30,9 @@ public class Deadlift {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_dl_client"))
 	private Client clienteD;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fecha;
 	
 	private int kgs, reps;
 }

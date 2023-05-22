@@ -1,4 +1,7 @@
 package com.salesianostriana.dam.FinalProject.controller;
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,6 +37,7 @@ public class ClientController {
 	@PostMapping("/register/submit")
 	public String submitRegisterForm(@ModelAttribute("cliente") Client cliente) {
 		cliente.setPassword(passwordEncoder.encode(cliente.getPassword()));
+		cliente.setCancelDate(LocalDate.now().plusMonths(1));
 		servicio.save(cliente);
 		return "redirect:/";
 	}
@@ -70,6 +74,13 @@ public class ClientController {
 		
 		
 	}
+	
+	@GetMapping("/admin/clientes")
+	public String showAdCli(Model m) {
+		m.addAttribute("clientList", servicio.findAll());
+		return "ClienteAdmin";
+	}
+	
 	@GetMapping("/reserve/delete/{idRes}")
 	public String deleteReserve(@PathVariable("idRes")long idRes, @AuthenticationPrincipal Client cliente) {
 		if(serviceR.findById(idRes).isPresent()){
@@ -84,6 +95,23 @@ public class ClientController {
 	public String showPlani() throws Exception {
 		servicio.createPDF();
 		return "redirect:/mypage/hirereserve";
+	}
+	
+	@GetMapping("/admin/clientes/renovar/{codCliente}")
+	public String renewCancelDate(@PathVariable long codCliente) {
+		Optional <Client> editC = servicio.findById(codCliente);
+		if(editC.isPresent()) {
+			Client edit = editC.get();
+			edit.setCancelDate(
+					edit
+					.getCancelDate()
+					.plusMonths(1)
+					);
+			servicio.edit(edit);
+			return "redirect:/admin/clientes";
+		}else {
+			return "ClienteAdmin";
+		}
 	}
 	
 }

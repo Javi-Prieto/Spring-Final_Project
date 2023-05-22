@@ -32,6 +32,7 @@
             <form th:action="@{/register/submit}" class="w-75 m-auto bg-light rounded border row d-grid" th:object="${cliente}" method="POST" id="registerF">
                 <input type="hidden" name="id" th:field="*{cuotaMens}" />
                 <input type="hidden" name="id" th:field="*{admin}" />
+                <input type="hidden" name="id" th:field="*{cancelDate}" />
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">

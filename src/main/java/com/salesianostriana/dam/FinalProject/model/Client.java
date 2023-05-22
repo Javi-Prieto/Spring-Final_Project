@@ -41,6 +41,8 @@ public class Client implements UserDetails {
 	private boolean admin = false;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate cancelDate;
 	private char gender;
 	
 	@OneToOne(mappedBy = "cliente", optional = true)

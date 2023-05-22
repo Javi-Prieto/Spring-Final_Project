@@ -32,6 +32,7 @@ public class InitData {
 				.cuotaMens(0)
 				.email("user@user.com")
 				.birthDate(LocalDate.of(2004, 3, 11))
+				.cancelDate(LocalDate.of(3000, 12, 31))
 				.gender('M')
 				.build();
 		
@@ -44,6 +45,7 @@ public class InitData {
 				.cuotaMens(0)
 				.email("admin@admin.com")
 				.birthDate(LocalDate.of(2004, 3, 11))
+				.cancelDate(LocalDate.of(3000, 12, 31))
 				.gender('F')
 				.build();
 		

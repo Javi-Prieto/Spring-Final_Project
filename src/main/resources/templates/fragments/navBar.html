@@ -26,6 +26,9 @@
                 <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/admin/ptrainerlist}"class="nav-link pe-5 ps-5">Entrenadores Admin</a>
                 </li>
+                <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/admin/clientes}"class="nav-link pe-5 ps-5">Clientes Admin</a>
+                </li>
             </ul>
         </div>
         <div class=" m-0 p-0 w-100  dropdown d-flex flex-row-reverse" >

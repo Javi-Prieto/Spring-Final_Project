@@ -37,6 +37,8 @@ function validatePhone(){
         document.getElementById('submitRg').disabled = true;
         document.getElementById('submitRg').style.opacity = (0.5);
     }else{
+        document.getElementById('alertP').style.color = 'green';
+        document.getElementById('alertP').innerHTML = 'Número de Tlfno. correcto';
         document.getElementById('submitRg').disabled = false;
         document.getElementById('submitRg').style.opacity = (1);
     }

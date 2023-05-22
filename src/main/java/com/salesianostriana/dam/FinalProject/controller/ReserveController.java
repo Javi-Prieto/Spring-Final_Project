@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,6 +26,8 @@ public class ReserveController {
 	private ReserveService service;
 	@Autowired
 	private RoomService serviceR;
+	@Autowired
+	private ClientService serviceC;
 	
 	@PostMapping("/reserve/submit/{codSala}")
 	public String  submitReserve(@ModelAttribute("newReserve") Reserve r, @AuthenticationPrincipal Client cliente, @PathVariable("codSala") Long salaId) {
@@ -50,9 +51,31 @@ public class ReserveController {
 		
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@GetMapping("/reserve/delete/{idRes}")
-	public String deleteReserve(@PathVariable("idRes")long idRes) {
+	public String deleteReserve(@PathVariable("idRes")long idRes, @AuthenticationPrincipal Client cliente) {
 		if(service.findById(idRes).isPresent()){
+			Client editC = serviceC.findById(cliente
+												.getCodCliente())
+									.get();
+			Room editR = serviceR.findById(service
+										.findById(idRes)
+										.get()
+										.getRoom()
+										.getCodSala())
+								.get();
+			List <Reserve> editRC =editC.getReservas();
+			List <Reserve> editRR =editR.getClients();
+			
+			editRC.remove(service.findById(idRes));
+			editC.setReservas(editRC);
+			serviceC.edit(editC);
+			
+			
+			editRR.remove(serviceR.findById(idRes));
+			editR.setClients(editRR);
+			serviceR.edit(editR);
+			
 			service.deleteById(idRes);
 			return "redirect:/mypage/hirereserve";
 		}else {

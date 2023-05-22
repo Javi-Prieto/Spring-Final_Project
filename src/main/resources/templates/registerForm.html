@@ -17,6 +17,10 @@
             background-size: 100%;
             background-repeat: no-repeat;
         }
+        form i{
+            cursor: pointer;
+
+        }
     </style>
 </head>
 <body>
@@ -53,8 +57,11 @@
                             <label for="passw" class="col-form-label pe-1 p-0"><i class="bi bi-lock text-dark"></i></label>
                         </div>
                         <div class="col">
-                            <input type="password" name="passw" id="passw" required class="form-control h-50" th:field="*{password}">
-                        	<p id="alert"></p>
+                            <div class="d-flex">
+                                <input type="password" name="passw" id="passw" required class="form-control h-50" th:field="*{password}">
+                                <i class="bi bi-eye-slash text-black" id="showPsw"></i>
+                            </div>
+                            <p id="alertC"></p>
                         </div>
                     </div>
                     <div id="rigPc" class="d-grid row">
@@ -62,7 +69,10 @@
                             <label for="passwC" class="col-form-label pe-1 ">Repita la Contraseña</label>
                         </div>
                         <div class="col">
-                            <input type="password" name="passwC" id="passwC" required class="form-control h-50 ">
+                            <div class="d-flex">
+                                <input type="password" name="passwC" id="passwC" onkeyup="validatePassw()" required class="form-control h-50 ">
+                                <i class="bi bi-eye-slash text-black" id="showPswR"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +82,8 @@
                             <label for="numTlf" class="col-form-label pe-1 p-0"><i class="bi bi-phone text-dark"></i></label>
                         </div>
                         <div class="col">
-                            <input type="text" name="numTlf" id="numTlf" required class="form-control h-50 " th:field="*{numTelefono}">
+                            <input type="text" name="numTlf" id="numTlf" required class="form-control h-50 " th:field="*{numTelefono}" onkeyup="validatePhone()">
+                            <p id="alertP"></p>
                         </div>
                     </div>
                     <div id="rigPc" class="d-grid row">
@@ -98,7 +109,8 @@
                             <label for="dni" class="col-form-label pe-1 ">DNI</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="dni" id="dni" required class="form-control h-25 " th:field="*{dni}">
+                            <input type="text" name="dni" id="dni" required class="form-control h-25 " th:field="*{dni}" onkeyup="validateDNI">
+                            <p id="alertD"></p>
                         </div>                   
                         
                     </div>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.FinalProject.model.Client;
 import com.salesianostriana.dam.FinalProject.model.Reserve;
 import com.salesianostriana.dam.FinalProject.model.Room;
+import com.salesianostriana.dam.FinalProject.service.ClientService;
 import com.salesianostriana.dam.FinalProject.service.ReserveService;
 import com.salesianostriana.dam.FinalProject.service.RoomService;
 
@@ -40,7 +42,7 @@ public class ReserveController {
 			r.setRoom(editR);
 			service.save(r);
 			serviceR.edit(editR);
-			cliente.setRoomReserve(r);
+			cliente.setReservas(clienList);
 			return "redirect:/mypage/hirereserve";
 		}else {
 			return "/room";

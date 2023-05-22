@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,27 +46,49 @@ public class Client implements UserDetails {
 	@OneToOne(mappedBy = "cliente", optional = true)
 	private Hire hirePtrainer;
 	
-	@OneToOne(mappedBy = "cliente", optional = true)
-	private Reserve roomReserve;
+	@OneToMany(
+			mappedBy = "cliente", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<Reserve> reservas;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="clienteB", fetch = FetchType.EAGER)
-	private List<BenchPress> benchpressList;
+	@OneToMany(
+			mappedBy="clienteB",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private Set<BenchPress> benchpressList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="clienteS", fetch = FetchType.EAGER)
+	@OneToMany(
+			mappedBy="clienteS",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
 	private Set<Squat> squatList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="clienteD", fetch = FetchType.EAGER)
+	@OneToMany(
+			mappedBy="clienteD", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
 	private Set<Deadlift> deadliftList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="clienteF", fetch = FetchType.EAGER)
+	@OneToMany(
+			mappedBy="clienteF", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
 	private Set<Biometrics> bioList;
 	
 

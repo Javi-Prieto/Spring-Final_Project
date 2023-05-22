@@ -42,7 +42,7 @@
 		<hr />
 		<section class="w-100">
 			<h1 class="text-center">RESERVAS DE SALA</h1>
-			<div class="rounded border-1 bg-light m-auto w-50" th:if="${reserve != null}">
+			<div class="rounded border-1 bg-light m-auto w-50" th:each="reserve : ${reserve}" th:if="${reserve != null}">
 				<h3 class="text-center">RESERVA DE LA SALA</h3>
 				<p>Con esta reserva te autoriza el acceso a la sala de musculación en cualquier momento del dia de hoy</p>
 				<p>FECHA: <span th:text="${#temporals.format(reserve.horaEntrada, 'yyyy-MM-dd HH:mm:ss')}"></span></p>

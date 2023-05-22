@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +25,7 @@ public class Reserve {
 	
 	private LocalDateTime horaEntrada, horaSalida;
 	
-	@OneToOne
+	@ManyToOne
 	private Client cliente;
 	
 	@ManyToOne

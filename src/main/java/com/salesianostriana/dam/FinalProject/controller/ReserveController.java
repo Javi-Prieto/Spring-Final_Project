@@ -1,11 +1,14 @@
 package com.salesianostriana.dam.FinalProject.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,8 +35,8 @@ public class ReserveController {
 			List<Reserve> clienList = editR.getClients();
 			clienList.add(r);
 			r.setCliente(cliente);
-			r.setHoraEntrada(LocalDateTime.now());
-			r.setHoraSalida(LocalDateTime.now().plusHours(8));
+			r.setHoraEntrada(LocalDateTime.of(LocalDate.now(), LocalTime.of(9, 0)));
+			r.setHoraSalida(LocalDateTime.of(LocalDate.now(), LocalTime.of(22, 0)));
 			r.setRoom(editR);
 			service.save(r);
 			serviceR.edit(editR);
@@ -43,5 +46,15 @@ public class ReserveController {
 			return "/room";
 		}
 		
+	}
+	
+	@GetMapping("/reserve/delete/{idRes}")
+	public String deleteReserve(@PathVariable("idRes")long idRes) {
+		if(service.findById(idRes).isPresent()){
+			service.deleteById(idRes);
+			return "redirect:/mypage/hirereserve";
+		}else {
+			return "redirect:/mypage/hirereserve";
+		}
 	}
 }

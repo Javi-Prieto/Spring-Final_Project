@@ -30,7 +30,7 @@ public class ClientController {
 	public String submitRegisterForm(@ModelAttribute("cliente") Client cliente) {
 		cliente.setPassword(passwordEncoder.encode(cliente.getPassword()));
 		servicio.save(cliente);
-		return "redirect:/mypage/hirereserve";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/mypage")
@@ -41,13 +41,28 @@ public class ClientController {
 	@GetMapping("/mypage/hirereserve")
 	public String showMyHiresReserves(Model model, @AuthenticationPrincipal Client client) {
 		
-		if(client.getHirePtrainer() != null) {
+		if(client.getHirePtrainer() != null && client.getRoomReserve() != null) {
+			model.addAttribute("trainer", client.getHirePtrainer().getTrainer());
+			model.addAttribute("hire", client.getHirePtrainer());
+			model.addAttribute("reserve", client.getRoomReserve());
+			return "HireReserve";
+		}else if(client.getHirePtrainer() != null && client.getRoomReserve() == null) {
+
 			model.addAttribute("trainer", client.getHirePtrainer().getTrainer());
 			model.addAttribute("hire", client.getHirePtrainer());
 			return "HireReserve";
-		}else {
+		}else if(client.getRoomReserve() != null && client.getHirePtrainer() == null) {
+
+			model.addAttribute("reserve", client.getRoomReserve());
 			return "HireReserve";
 		}
+		else {
+			model.addAttribute("reserve", null);
+			model.addAttribute("hire", null);
+			model.addAttribute("trainer", null);
+			return "HireReserve";
+		}
+		
 		
 	}
 	

@@ -32,7 +32,7 @@
 		        <a class="nav-link p-0 m-0  dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" id="user">
                 	<i class="bi bi-person-circle"></i>
             	</a>
-		        <ul class="dropdown-menu">
+		        <ul class="dropdown-menu end-0">
 		           <li><a class="dropdown-item" th:href="@{/mypage}" sec:authorize="isAuthenticated()">Mi Perfil</a></li>
 		           <li><a class="dropdown-item" th:href="@{/logout}" sec:authorize="isAuthenticated()">Cerrar Sesión</a></li>
 		           <li><a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Iniciar Sesión</a></li>

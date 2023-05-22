@@ -2,15 +2,16 @@ package com.salesianostriana.dam.FinalProject.service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
+
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.salesianostriana.dam.FinalProject.model.Biometrics;
 import com.salesianostriana.dam.FinalProject.model.Client;
 import com.salesianostriana.dam.FinalProject.repositories.ClientRepository;
 import com.salesianostriana.dam.FinalProject.servicebase.BaseServiceImp;
@@ -18,29 +19,6 @@ import com.salesianostriana.dam.FinalProject.servicebase.BaseServiceImp;
 @Service
 public class ClientService 
 	extends BaseServiceImp<Client, Long, ClientRepository>{
-
-	/*public String parseHTMLTemplate() {
-		ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-		TemplateEngine templateEngine = new TemplateEngine();
-		Context context = new Context();
-		
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode(TemplateMode.HTML);
-		templateEngine.setTemplateResolver(templateResolver);
-		
-		return templateEngine.process("planning.html", context);
-	}
-	public void generatePDF(String html) throws Exception {
-		String outputFolder = System.getProperty("user.home") + "/Downloads/" + File.separator + "planning.pdf";
-		OutputStream outputStream = new FileOutputStream(outputFolder);
-		ITextRenderer renderer = new ITextRenderer();
-		
-		renderer.setDocumentFromString(html);
-		renderer.layout();
-		renderer.createPDF(outputStream);
-		
-		outputStream.close();
-	}*/
 	
 	public void createPDF() throws FileNotFoundException {
 		String outputFolder = System.getProperty("user.home") + "/Downloads/" + File.separator + "planning.pdf";
@@ -312,6 +290,28 @@ public class ClientService
 		doc.add(p1);
 		doc.add(table);
 		doc.close();
+		
+	}
+	public double calculateIMC(Biometrics bio) {
+		double heightM = (double)bio.getHeightCm()/100;
+		return (double)bio.getBw()/Math.pow(heightM, 2);
+	}
+	public double calculateFatPercent(Biometrics bio) {
+		
+		int age = LocalDate.now()
+				.minusYears(bio.getClienteF()
+						.getBirthDate()
+						.getYear())
+				.getYear();
+		switch (bio.getClienteF().getGender()) {
+			case 'F':
+				return (1.20 * calculateIMC(bio))+ (0.23 * age) - 5.4;
+			case 'M':
+				return (1.20 * calculateIMC(bio)) + (0.23 * age) - 16.2;
+			default:
+				return 0;
+					
+		}
 		
 	}
 

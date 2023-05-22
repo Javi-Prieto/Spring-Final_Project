@@ -15,6 +15,7 @@
     <hr class="m-1" />
     <main class="min-vh-100">
         <section>
+			<h1 class="text-center">CONTRATOS</h1>
 			<div class="card m-auto" style="max-width: 540px;" th:if="${hire != null}">
 			  <div class="row g-0">
 			    <div class="col-md-4">
@@ -28,7 +29,8 @@
 			        	<br /> Fecha contratación: <span th:text="${#temporals.format(hire.startHire)}"></span>
 			        	<br /> Fecha fin de contrato: <span th:text="${#temporals.format(hire.startHire)}"></span>
 			        </p>
-			        <p class="card-text"><a th:href="@{/getPlaniPDF}" class="btn btn-small btn-outline-warning">Planificación</a></p>
+			        <p class="card-text"><a th:href="@{/getPlaniPDF}" class="btn btn-small btn-outline-warning">Planificación <i class="bi bi-file-earmark-arrow-down-fill "></i></a></p>
+			        <p class="card-text small-text" style="font-size: 11px;">el documento de descargará automaticamente en la carpeta descargas</p>
 			      </div>
 			    </div>
 			  </div>
@@ -37,8 +39,22 @@
 				<p class="text-center text-light">Aún no tienes contratos</p>
 			</div>
 		</section>
-		<section>
-			
+		<hr />
+		<section class="w-100">
+			<h1 class="text-center">RESERVAS DE SALA</h1>
+			<div class="rounded border-1 bg-light m-auto w-50" th:if="${reserve != null}">
+				<h3 class="text-center">RESERVA DE LA SALA</h3>
+				<p>Con esta reserva te autoriza el acceso a la sala de musculación en cualquier momento del dia de hoy</p>
+				<p>FECHA: <span th:text="${#temporals.format(reserve.horaEntrada, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+				<p>VALIDO HASTA: <span th:text="${#temporals.format(reserve.horaSalida, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+				<div class="m-auto text-center">
+					<a th:href="@{/reserve/delete/{idRes}(idRes = ${reserve.idRes})}" class="btn btn-small btn-outline-warning text-center">Cancelar Reserva</a>
+				</div>
+				
+			</div>
+			<div class="text-center w-100" th:unless="${reserve != null}">
+				<p class="text-center text-light">¿Hoy no entrenas? Reserva tu sala para hoy</p>
+			</div>
 		</section>
     </main>
     <footer  th:replace="~{fragments/footer::footer}"></footer>

@@ -48,18 +48,16 @@ public class Client implements UserDetails {
 	
 	@OneToMany(
 			mappedBy = "cliente", 
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true)
+			fetch = FetchType.EAGER
+			/*cascade = CascadeType.ALL,
+			orphanRemoval = true*/)
 	private List<Reserve> reservas;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy="clienteB",
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
+			fetch = FetchType.EAGER
 			)
 	private Set<BenchPress> benchpressList;
 	
@@ -67,9 +65,7 @@ public class Client implements UserDetails {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy="clienteS",
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
+			fetch = FetchType.EAGER
 			)
 	private Set<Squat> squatList;
 	
@@ -77,18 +73,14 @@ public class Client implements UserDetails {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy="clienteD", 
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true)
+			fetch = FetchType.EAGER)
 	private Set<Deadlift> deadliftList;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy="clienteF", 
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true)
+			fetch = FetchType.EAGER)
 	private Set<Biometrics> bioList;
 	
 

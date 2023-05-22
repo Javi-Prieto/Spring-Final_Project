@@ -36,9 +36,9 @@ public class Room {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy="room", 
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
+			fetch = FetchType.EAGER
+			/*,cascade = CascadeType.ALL,
+			orphanRemoval = true*/
 			)
 	@Builder.Default
 	private List<Reserve> clients = new ArrayList<>();

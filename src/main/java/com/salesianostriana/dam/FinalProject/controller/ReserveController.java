@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,6 +26,8 @@ public class ReserveController {
 	private ReserveService service;
 	@Autowired
 	private RoomService serviceR;
+	@Autowired
+	private ClientService serviceC;
 	
 	@PostMapping("/reserve/submit/{codSala}")
 	public String  submitReserve(@ModelAttribute("newReserve") Reserve r, @AuthenticationPrincipal Client cliente, @PathVariable("codSala") Long salaId) {
@@ -50,13 +51,5 @@ public class ReserveController {
 		
 	}
 	
-	@GetMapping("/reserve/delete/{idRes}")
-	public String deleteReserve(@PathVariable("idRes")long idRes) {
-		if(service.findById(idRes).isPresent()){
-			service.deleteById(idRes);
-			return "redirect:/mypage/hirereserve";
-		}else {
-			return "redirect:/mypage/hirereserve";
-		}
-	}
+	
 }

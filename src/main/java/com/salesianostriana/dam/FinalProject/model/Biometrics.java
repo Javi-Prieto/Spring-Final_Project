@@ -1,6 +1,5 @@
 package com.salesianostriana.dam.FinalProject.model;
 
-import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,19 +14,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Reserve {
-	
+@AllArgsConstructor
+public class Biometrics {
+
 	@Id
 	@GeneratedValue
-	private Long idRes;
-	
-	private LocalDateTime horaEntrada, horaSalida;
+	private Long idBio;
 	
 	@ManyToOne
-	private Client cliente;
+	private Client clienteF;
 	
-	@ManyToOne
-	private Room room;
+	private int heightCm, bw;
 }

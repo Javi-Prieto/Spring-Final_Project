@@ -1,13 +1,19 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +21,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -30,15 +38,60 @@ public class Client implements UserDetails {
 	
 	private String dni, codPostal, cuentaBanco, email, numTelefono, password, username; 
 	private double cuotaMens = 32.99;
-	private int alturaCm, peso, edad, sqWeight, bpWeigh, dlWeight, sqReps, bpReps, dlReps;
 	private boolean admin = false;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
+	private char gender;
 	
 	@OneToOne(mappedBy = "cliente", optional = true)
 	private Hire hirePtrainer;
 	
-	@OneToOne(mappedBy = "cliente", optional = true)
-	private Reserve roomReserve;
+	@OneToMany(
+			mappedBy = "cliente", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<Reserve> reservas;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteB",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private Set<BenchPress> benchpressList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteS",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private Set<Squat> squatList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteD", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private Set<Deadlift> deadliftList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteF", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private Set<Biometrics> bioList;
+	
+
 	
 	
 	@Override

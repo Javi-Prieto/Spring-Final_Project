@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="/js/validation.js" defer></script>
+    
     <style type="text/css">
         body{
             background-image: url(/img/mr-olympia-1.jpg);
@@ -23,7 +25,7 @@
             <h1 class="m-auto text-center text-warning">COMIENZA YA TU ENTRENO</h1>
         </section>
         <section class="pt-5">
-            <form th:action="@{/register/submit}" class="w-75 m-auto bg-light rounded border row d-grid" th:object="${cliente}" method="POST">
+            <form th:action="@{/register/submit}" class="w-75 m-auto bg-light rounded border row d-grid" th:object="${cliente}" method="POST" id="registerF">
                 <input type="hidden" name="id" th:field="*{cuotaMens}" />
                 <input type="hidden" name="id" th:field="*{admin}" />
                 <div class="col d-flex justify-content-evenly pt-3">
@@ -52,6 +54,7 @@
                         </div>
                         <div class="col">
                             <input type="password" name="passw" id="passw" required class="form-control h-50" th:field="*{password}">
+                        	<p id="alert"></p>
                         </div>
                     </div>
                     <div id="rigPc" class="d-grid row">
@@ -119,7 +122,7 @@
                 </div>
                 
                 <div class="col m-auto text-center p-3">
-                    <input type="submit" name="enviar" value="Enviar" class="btn btn-primary"/>
+                    <input type="submit" name="enviar" value="Enviar" class="btn btn-primary " id="submitRg"/>
                 </div>
                 <p class="text-center">O vuelve a la <a th:href="@{/}">Página Principal</a> si lo deseas</p>
                 

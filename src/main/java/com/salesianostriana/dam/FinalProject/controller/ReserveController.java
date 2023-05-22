@@ -51,35 +51,5 @@ public class ReserveController {
 		
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
-	@GetMapping("/reserve/delete/{idRes}")
-	public String deleteReserve(@PathVariable("idRes")long idRes, @AuthenticationPrincipal Client cliente) {
-		if(service.findById(idRes).isPresent()){
-			Client editC = serviceC.findById(cliente
-												.getCodCliente())
-									.get();
-			Room editR = serviceR.findById(service
-										.findById(idRes)
-										.get()
-										.getRoom()
-										.getCodSala())
-								.get();
-			List <Reserve> editRC =editC.getReservas();
-			List <Reserve> editRR =editR.getClients();
-			
-			editRC.remove(service.findById(idRes));
-			editC.setReservas(editRC);
-			serviceC.edit(editC);
-			
-			
-			editRR.remove(serviceR.findById(idRes));
-			editR.setClients(editRR);
-			serviceR.edit(editR);
-			
-			service.deleteById(idRes);
-			return "redirect:/mypage/hirereserve";
-		}else {
-			return "redirect:/mypage/hirereserve";
-		}
-	}
+	
 }

@@ -3,6 +3,7 @@ package com.salesianostriana.dam.FinalProject.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,10 @@ public class PersonalTrainer {
 	private int experiencia;
 	private int valoracion;
 	
-	@OneToMany(mappedBy="trainer", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="trainer",
+			fetch=FetchType.EAGER,
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true)
 	@Builder.Default
 	private List<Hire> clientes = new ArrayList<>();
 }

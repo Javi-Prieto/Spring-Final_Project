@@ -50,11 +50,11 @@
 				<div class="m-auto text-center">
 					<a th:href="@{/reserve/delete/{idRes}(idRes = ${reserve.idRes})}" class="btn btn-small btn-outline-warning text-center">Cancelar Reserva</a>
 				</div>
-				
+				<div class="text-center w-100" th:unless="${reserve != null}">
+					<p class="text-center text-light">¿Hoy no entrenas? Reserva tu sala para hoy</p>
+				</div>
 			</div>
-			<div class="text-center w-100" th:unless="${reserve != null}">
-				<p class="text-center text-light">¿Hoy no entrenas? Reserva tu sala para hoy</p>
-			</div>
+			
 		</section>
     </main>
     <footer  th:replace="~{fragments/footer::footer}"></footer>

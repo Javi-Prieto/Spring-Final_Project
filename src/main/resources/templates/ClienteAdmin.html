@@ -28,7 +28,7 @@
     <main class="min-vh-100">
 
       <section>
-        <h1 class="text-center">CLIENTES ACTIVOS</h1>
+        <h1 class="text-center">CLIENTES ACTIVOS <a th:href="@{/admin/clientes/add}"><i class="bi bi-plus-square text-warning"></i></a></h1>
         <table class="table table-hover table-light rounded-2 w-75 m-auto text-center">
 			<thead>
 				<tr>
@@ -37,7 +37,7 @@
 					<th>Fecha Nacimiento</th>
 					<th>Fecha Expiración</th>
 					<th>Renovar</th>
-					<th>Borrar</th>
+					<th>Editar/Borrar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,7 +47,7 @@
 					<td th:text="${cliente.birthDate}"></td>
 					<td th:text="${cliente.cancelDate}"></td>
 					<td><a th:href="@{/admin/clientes/renovar/{codCliente} (codCliente = ${cliente.codCliente})}" class="btn btn-outline-warning">Renovar</a></td>
-					<td><a th:href="@{/}"><i class="bi bi-trash3 text-warning"></i></a></td>
+					<td><a th:href="@{/admin/clientes/edit/{codCliente}(codCliente = ${cliente.codCliente})}"><i class="bi bi-pencil-square text-warning"></i></a>/<a th:href="@{/admin/clientes/delete/{codCliente}(codCliente = ${cliente.codCliente})}"><i class="bi bi-trash3 text-warning"></i></a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.FinalProject.model.Client;
+import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
 import com.salesianostriana.dam.FinalProject.service.ClientService;
 import com.salesianostriana.dam.FinalProject.service.ReserveService;
 
@@ -112,6 +113,41 @@ public class ClientController {
 		}else {
 			return "ClienteAdmin";
 		}
+	}
+	
+	@GetMapping("/admin/clientes/add")
+	public String showFormAdd(Model m) {
+		Client client = new Client();
+		m.addAttribute("cliente", client);
+		return "clientAdForm";
+	}
+	@PostMapping("/admin/clientes/add/submit")
+	public String submitAddForm(@ModelAttribute("cliente") Client cliente) {
+		servicio.save(cliente);
+		return "redirect:/admin/clientes";
+	}
+	
+	@GetMapping("/admin/clientes/edit/{codCliente}")
+	public String showEditForm(@PathVariable("codCliente") Long codCliente, Model m) {
+		Optional<Client> forEdit = servicio.findById(codCliente);
+		
+		if(forEdit.isPresent()) {
+			m.addAttribute("cliente", forEdit.get());
+			return "clientAdForm";
+		}else {
+			return "redirect:/admin/clientes";
+		}
+	}
+	@PostMapping("/admin/clientes/edit/submit")
+	public String submitEditForm(@ModelAttribute("cliente") Client a) {
+		servicio.edit(a);
+		return "redirect:/admin/clientes";
+	}
+	
+	@GetMapping("/admin/clientes/delete/{codCliente}")
+	public String deletePTrainer(@PathVariable("codCliente") long id) {
+		servicio.deleteById(id);
+		return "redirect:/admin/clientes";
 	}
 	
 }

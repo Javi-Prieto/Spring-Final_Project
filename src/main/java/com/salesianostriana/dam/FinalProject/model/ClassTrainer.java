@@ -1,19 +1,18 @@
 package com.salesianostriana.dam.FinalProject.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -31,7 +30,8 @@ public class ClassTrainer {
 	private double salario;
 	private int experiencia;
 	
-	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
-	@Builder.Default
-	private List<Room> salas = new ArrayList<>();
+	@OneToOne(mappedBy = "trainer", optional = true)
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private Manage man;
 }

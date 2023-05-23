@@ -18,7 +18,7 @@
                     <a th:href="@{/ctrainerlist}"class="nav-link pe-5 ps-5">Monitores</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="Sala.html" class="nav-link pe-5  ps-5">Sala</a>
+                    <a th:href="@{/room}" class="nav-link pe-5  ps-5">Sala</a>
                 </li>
                 <li class="nav-item ">
                     <a th:href="@{/ptrainerlist}" class="nav-link pe-5 ps-5">Entrenadores</a>
@@ -26,14 +26,17 @@
                 <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/admin/ptrainerlist}"class="nav-link pe-5 ps-5">Entrenadores Admin</a>
                 </li>
+                <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/admin/clientes}"class="nav-link pe-5 ps-5">Clientes Admin</a>
+                </li>
             </ul>
         </div>
         <div class=" m-0 p-0 w-100  dropdown d-flex flex-row-reverse" >
 		        <a class="nav-link p-0 m-0  dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" id="user">
                 	<i class="bi bi-person-circle"></i>
             	</a>
-		        <ul class="dropdown-menu">
-		           <li><a class="dropdown-item" th:href="@{/}" sec:authorize="isAuthenticated()">Mi Perfil</a></li>
+		        <ul class="dropdown-menu end-0">
+		           <li><a class="dropdown-item" th:href="@{/mypage}" sec:authorize="isAuthenticated()">Mi Perfil</a></li>
 		           <li><a class="dropdown-item" th:href="@{/logout}" sec:authorize="isAuthenticated()">Cerrar Sesión</a></li>
 		           <li><a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Iniciar Sesión</a></li>
 		        </ul>

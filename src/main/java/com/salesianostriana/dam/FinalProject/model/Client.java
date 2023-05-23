@@ -1,12 +1,20 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +22,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -29,11 +39,57 @@ public class Client implements UserDetails {
 	
 	private String dni, codPostal, cuentaBanco, email, numTelefono, password, username; 
 	private double cuotaMens = 32.99;
-	private int sqWeight = 0, bpWeigh = 0, dlWeight = 0, sqReps = 0, bpReps = 0
-			, dlReps = 0;
-	private boolean admin;
+	private boolean admin = false;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate cancelDate;
+	private char gender;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToOne(mappedBy = "cliente", optional = true, cascade = CascadeType.REMOVE)
+	private Hire hirePtrainer;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy = "cliente", 
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE)
+	private List<Reserve> reservas;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteB",
+			fetch = FetchType.EAGER
+			)
+	private Set<BenchPress> benchpressList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteS",
+			fetch = FetchType.EAGER
+			)
+	private Set<Squat> squatList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteD", 
+			fetch = FetchType.EAGER)
+	private Set<Deadlift> deadliftList;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(
+			mappedBy="clienteF", 
+			fetch = FetchType.EAGER)
+	private Set<Biometrics> bioList;
+	
+
 	
 	
 	@Override

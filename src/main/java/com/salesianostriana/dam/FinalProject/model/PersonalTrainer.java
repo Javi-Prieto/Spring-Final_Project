@@ -1,9 +1,15 @@
 package com.salesianostriana.dam.FinalProject.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,4 +32,11 @@ public class PersonalTrainer {
 	private double precioMensual;
 	private int experiencia;
 	private int valoracion;
+	
+	@OneToMany(mappedBy="trainer",
+			fetch=FetchType.EAGER,
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true)
+	@Builder.Default
+	private List<Hire> clientes = new ArrayList<>();
 }

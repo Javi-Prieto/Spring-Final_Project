@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+</head>
+<body class="bg-black">
+     <nav th:replace="~{fragments/navBar::navBar}"></nav>
+    <hr class="m-1" />
+    <main class="min-vh-100">
+        <section>
+			<h1 class="text-center">CONTRATOS</h1>
+			<div class="card m-auto" style="max-width: 540px;" th:if="${hire != null}">
+			  <div class="row g-0">
+			    <div class="col-md-4">
+			      <img th:src="${trainer.urlImg}" class="img-fluid rounded-start" alt="...">
+			    </div>
+			    <div class="col-md-8">
+			      <div class="card-body">
+			        <h5 class="card-title" th:text="${trainer.nombre}"> <span th:text="${trainer.apellidos}"></span></h5>
+			        <p class="card-text">Email: <span th:text="${trainer.email}"></span>
+			        	<br /> Numero de Telefóno: <span th:text="${trainer.numTelefono}"></span>
+			        	<br /> Fecha contratación: <span th:text="${#temporals.format(hire.startHire)}"></span>
+			        	<br /> Fecha fin de contrato: <span th:text="${#temporals.format(hire.startHire)}"></span>
+			        </p>
+			        <p class="card-text"><a th:href="@{/getPlaniPDF}" class="btn btn-small btn-outline-warning">Planificación <i class="bi bi-file-earmark-arrow-down-fill "></i></a></p>
+			        <p class="card-text small-text" style="font-size: 11px;">el documento de descargará automaticamente en la carpeta descargas</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div class="text-center w-100" th:unless="${hire != null}">
+				<p class="text-center text-light">Aún no tienes contratos</p>
+			</div>
+		</section>
+		<hr />
+		<section class="w-100">
+			<h1 class="text-center">RESERVAS DE SALA</h1>
+			<div class="rounded border-1 bg-light m-auto w-50" th:each="reserve : ${reserve}" th:if="${reserve != null}">
+				<h3 class="text-center">RESERVA DE LA SALA</h3>
+				<p>Con esta reserva te autoriza el acceso a la sala de musculación en cualquier momento del dia de hoy</p>
+				<p>FECHA: <span th:text="${#temporals.format(reserve.horaEntrada, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+				<p>VALIDO HASTA: <span th:text="${#temporals.format(reserve.horaSalida, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+				<div class="m-auto text-center">
+					<a th:href="@{/reserve/delete/{idRes}(idRes = ${reserve.idRes})}" class="btn btn-small btn-outline-warning text-center">Cancelar Reserva</a>
+				</div>
+				<div class="text-center w-100" th:unless="${reserve != null}">
+					<p class="text-center text-light">¿Hoy no entrenas? Reserva tu sala para hoy</p>
+				</div>
+			</div>
+			
+		</section>
+    </main>
+    <footer  th:replace="~{fragments/footer::footer}"></footer>
+    
+    
+</body>
+</html>

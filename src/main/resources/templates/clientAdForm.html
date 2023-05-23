@@ -29,10 +29,8 @@
             <h1 class="m-auto text-center text-warning">COMIENZA YA TU ENTRENO</h1>
         </section>
         <section class="pt-5">
-            <form th:action="@{/register/submit}" class="w-75 m-auto bg-light rounded border row d-grid" th:object="${cliente}" method="POST" id="registerF">
-                <input type="hidden" name="id" th:field="*{cuotaMens}" />
-                <input type="hidden" name="id" th:field="*{admin}" />
-                <input type="hidden" name="id" th:field="*{cancelDate}" />
+            <form th:action="${cliente.codCliente != 0} ? @{/admin/clientes/edit/submit} : @{/admin/clientes/add/submit}" class="w-75 m-auto bg-light rounded border row d-grid" th:object="${cliente}" method="POST" id="registerF">
+                <input th:if="${cliente.codCliente != 0}" type="hidden" name="id" th:field="*{codCliente}" />
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">
@@ -131,6 +129,32 @@
 						  <option th:value="F" value="F">Masculino</option>
 						  <option th:value="M" value="F">Femenino</option>
 						</select>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-evenly pt-3">
+                    <div id="leftN" class="row d-grid">
+                        <div class="col">
+                            <label for="cuota" class="col-form-label pe-1">Cuota: </label>
+                        </div>
+                        <div class="col">
+                            <input type="number" min="0" name="cuota" id="nameC" required class="form-control h-50" th:field="*{cuotaMens}">
+                        </div>
+                        
+                    </div>
+                    <div id="rigC" class="d-grid row">
+                        <select class="form-select" aria-label="Default select example" th:field="*{admin}"> 
+						  <option selected value="0">Seleccione el ROL</option>
+						  <option th:value="1" value="true">Admin</option>
+						  <option th:value="0" value="F">User</option>
+						</select>
+                    </div>
+                    <div id="rigC" class="d-grid row">
+                        <div class="col">
+                            <label for="cancel" class="col-form-label pe-1 p-0">Fecha de Expiración:</label>
+                        </div>
+                        <div class="col">
+                            <input type="date" name="cancel" id="birth" required class="form-control " th:field="*{cancelDate}">
+                        </div>
                     </div>
                 </div>
                 

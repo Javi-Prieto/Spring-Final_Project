@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="/js/animation.js" defer></script>
+</head>
+	<body class="bg-black">
+    	<nav th:replace="~{fragments/navBar::navBar}"></nav>
+    	<main class="min-vh-100">
+			<section class="w-100">
+				<h1 class="text-center text-warning">PESO Y ALTURA <a th:href="@{/mypage/biometrics/add}"><i class="bi bi-plus-square-fill text-danger"></i></a></h1>
+				<table class="table table-hover table-light w-75 m-auto border boder-1 rounded text-center">
+					<thead>
+						<th>PESO</th>
+						<th>ALTURA</th>
+						<th>IMC</th>
+						<th>% GRASO(aproximado)</th>
+						<th>EDITAR/BORRAR</th>
+					</thead>
+					<tbody>
+						<tr th:each="bio : ${bList}">
+							<td th:text="${bio.bw}"></td>
+							<td th:text="${bio.heightCm}"></td>
+							<td th:text="${cServ.calculateIMC(bio)}"></td>
+							<th th:text="${cServ.calculateFatPercent(bio)}"></th>
+							<td><a th:href="@{/mypage/biometrics/edit/{idBio}(idBio = ${bio.idBio})}"><i class="bi bi-pencil-square text-danger"></i></a>/<a th:href="@{/mypage/biometrics/delete/{idBio}(idBio = ${bio.idBio})}"><i class="bi bi-trash3 text-danger"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
+    	<footer  th:replace="~{fragments/footer::footer}"></footer>   
+<body>
+</html>

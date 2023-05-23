@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.FinalProject.model.ClassTrainer;
 import com.salesianostriana.dam.FinalProject.service.CTrainerService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class CTrainerController {
 	@Autowired
 	private CTrainerService service;

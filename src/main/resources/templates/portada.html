@@ -10,14 +10,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
     <title>Document</title>
-    <style>
+    <style type="text/css">
         
         #visualPage{
-            background-image: url(/img/vnze9szsqh751.webp);
-            background-size: 100%;
-            background-position: 0px -200px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/img/fondoPant.jpg);
+            
+            background-size: 100%, 100%;
+            background-position: 0px 0px,0px -200px;
             background-repeat: no-repeat;
         }
+        
     </style>
 </head>
 <body>
@@ -25,31 +27,44 @@
         <nav class="navbar navbar-expand bg-dark navbar-dark bg-opacity-10 p-0" >
             <div class=" container-fluid d-block opacity-100">
                 <ul class="navbar-nav justify-content-center ">
+					<li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    	<a th:href="@{/admin/ctrainerlist}"class="nav-link pe-5 ps-5">Monitores Admin</a>
+                	</li>
                     <li class="nav-item text-center">
                         <a th:href="@{/ctrainerlist}" class="nav-link pe-5 ps-5">Monitores</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="Sala.html" class="nav-link pe-5  ps-5">Sala</a>
+                        <a th:href="@{/room}" class="nav-link pe-5  ps-5">Sala</a>
                     </li>
                     <li class="nav-item ">
                         <a th:href="@{/ptrainerlist}" class="nav-link pe-5 ps-5">Entrenadores</a>
                     </li>
+                    <li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    	<a th:href="@{/admin/ptrainerlist}"class="nav-link pe-5 ps-5">Entrenadores Admin</a>
+               		</li>
+               		<li class="nav-item text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    	<a th:href="@{/admin/clientes}"class="nav-link pe-5 ps-5">Clientes Admin</a>
+                	</li>
                 </ul>
             </div>
         </nav>
         <div class="container-fluid text-center">
             <a href=""><img src="/img/Logo1.png" alt="" class="" width="10%"></a>
         </div>
-        <main >
-            <div class="text-center position-absolute start-50 translate-middle" id="container">
-                <br class="mt-5">
-                <h1 class="mt-5">ONI'S TEMPLE</h1>
-                <a href="registerForm.html" class="btn btn-lg mt-5 border-black" id="butSub">
-                    INSCRÍBETE
-                    <span class="text-white"><br> tan solo 32.99</span>
-                </a>
-                <p class="text-light">O si ya estas inscrito<a href="">Inicia Sesión</a></p>
-            </div>
+        <main class="w-100 h-100">
+			<div class="w-100" id="cont">
+				<div class="text-center position-absolute start-50 translate-middle rounded" id="container">
+	                <br class="mt-5">
+	                <h1 class="mt-5">ONI'S TEMPLE</h1>
+	                <a th:href="@{/register}" class="btn btn-lg mt-5 border-black" id="butSub" sec:authorize="!isAuthenticated()">
+	                    INSCRÍBETE
+	                    <span class="text-white"><br> tan solo 32.99</span>
+	                </a>
+	                <p class="text-light" sec:authorize="!isAuthenticated()">O si ya estas inscrito<a th:href="@{/login}" >Inicia Sesión</a></p>
+            		<form th:action="@{/logout}" method="POST" id="logoutForm" sec:authorize="isAuthenticated()" class="pb-5"><a th:href="@{/logout}" class="btn btn-outline-warning">Cerrar Sesión</a></form>
+            	</div>
+			</div>
+            
         </main>
     </div>
     <footer class="bg-dark text-center text-white">

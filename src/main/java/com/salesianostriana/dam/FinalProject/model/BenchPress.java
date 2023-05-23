@@ -34,4 +34,13 @@ public class BenchPress {
 	private LocalDate fecha;
 	
 	private int kgs, reps;
+	
+	public void addCliente(Client c) {
+		c.getBenchpressList().add(this);
+		this.clienteB = c;
+	}
+	public void removeCliente(Client c) {
+		this.clienteB = null;
+		c.getBenchpressList().remove(this);
+	}
 }

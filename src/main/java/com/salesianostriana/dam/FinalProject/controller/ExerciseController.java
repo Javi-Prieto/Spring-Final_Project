@@ -40,15 +40,14 @@ public class ExerciseController {
 	}
 	//BENCH
 	@GetMapping("/mypage/exercise/bench/add")
-	public String showAddBench(@AuthenticationPrincipal Client client,Model m) {
+	public String showAddBench(Model m) {
 		BenchPress benchForm = new BenchPress();
-		benchForm.setClienteB(client);
 		m.addAttribute("benchForm", benchForm);
 		return "BenchForm";
 	}
 	
 	@PostMapping("/mypage/exercise/bench/add/submit")
-	public String submitAddExercise( @ModelAttribute("benchForm") BenchPress b) {
+	public String submitAddExercise(@AuthenticationPrincipal Client client, @ModelAttribute("benchForm") BenchPress b) {
 		bService.save(b);
 		return "redirect:/mypage/exercise";
 	}
@@ -77,15 +76,14 @@ public class ExerciseController {
 	}
 	//SQUAT
 	@GetMapping("/mypage/exercise/squat/add")
-	public String showAddSquat(@AuthenticationPrincipal Client client,Model m) {
+	public String showAddSquat(Model m) {
 		Squat squatForm = new Squat();
-		squatForm.setClienteS(client);
 		m.addAttribute("squatForm", squatForm);
 		return "squatForm";
 	}
 	
 	@PostMapping("/mypage/exercise/squat/add/submit")
-	public String submitAddSquat(@ModelAttribute("squatForm") Squat s) {
+	public String submitAddSquat(@AuthenticationPrincipal Client client, @ModelAttribute("squatForm") Squat s) {
 		sService.save(s);
 		return "redirect:/mypage/exercise";
 	}
@@ -119,13 +117,12 @@ public class ExerciseController {
 	@GetMapping("/mypage/exercise/deadlift/add")
 	public String showAddDeadlift(@AuthenticationPrincipal Client client,Model m) {
 		Deadlift dlForm = new Deadlift();
-		dlForm.setClienteD(client);
 		m.addAttribute("dlForm", dlForm);
 		return "dlForm";
 	}
 	
 	@PostMapping("/mypage/exercise/deadlift/add/submit")
-	public String submitAddDeadlift(@ModelAttribute("dlForm") Deadlift d) {
+	public String submitAddDeadlift(@AuthenticationPrincipal Client client, @ModelAttribute("dlForm") Deadlift d) {
 		dService.save(d);
 		return "redirect:/mypage/exercise";
 	}

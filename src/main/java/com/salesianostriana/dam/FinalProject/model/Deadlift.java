@@ -35,4 +35,13 @@ public class Deadlift {
 	private LocalDate fecha;
 	
 	private int kgs, reps;
+	
+	public void addCliente(Client c) {
+		c.getDeadliftList().add(this);
+		this.clienteD = c;
+	}
+	public void removeCliente(Client c) {
+		this.clienteD = null;
+		c.getDeadliftList().remove(this);
+	}
 }

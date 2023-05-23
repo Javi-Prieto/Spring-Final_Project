@@ -23,8 +23,9 @@
             <h1 class="m-auto text-center text-warning">NUEVO ENTRENADOR</h1>
         </section>
         <section class="pt-5">
-            <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${pTrainerForm.codTrabajador != 0} ? @{/admin/edit/ptrainerform/submit} : @{/admin/add/ptrainerform/submit}" th:object="${pTrainerForm}" method="post">
+            <form class="w-75 m-auto bg-light rounded border row d-grid" th:action="${pTrainerForm.codTrabajador != 0} ? @{/admin/edit/ptrainerform/submit} : @{/admin/add/ptrainer/submit}" th:object="${pTrainerForm}" method="post">
                 <input th:if="${pTrainerForm.codTrabajador != 0}" type="hidden" name="id" th:field="*{codTrabajador}" />
+                
                 <div class="col d-flex justify-content-evenly pt-3">
                     <div id="leftN" class="row d-grid">
                         <div class="col">
@@ -76,7 +77,7 @@
                             <label for="expCt" class="col-form-label pe-1 ">Años de Experiencia</label>
                         </div>
                         <div class="col">
-                            <input type="number" name="expCt" id="expCt" th:field="*{experiencia}" required class="form-control h-50">
+                            <input type="number" name="expCt" id="expCt" th:field="*{experiencia}" min="0" required class="form-control h-50">
                         </div>
                     </div>
                 </div>
@@ -105,8 +106,17 @@
                             <label for="precioM" class="col-form-label pe-1 p-0">Precio Mensual</label>
                         </div>
                         <div class="col">
-                            <input type="number" name="precioM" id="precioM" th:field="*{precioMensual}" required class="form-control h-50 ">
+                            <input type="number" name="precioM" id="precioM" th:field="*{precioMensual}" min="0" required class="form-control h-50 ">
                         </div>
+                    </div>
+                    <div id="rigPc" class="form-check">
+                        <div class="col">
+                            <label for="val" class="col-form-label pe-1 ">Valoración del Entrenador</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" name="val" id="urlImg" th:field="*{valoracion}" min="0" max="5" required class="form-control h-25 ">
+                        </div>                   
+                        
                     </div>
                     <div id="rigPc" class="form-check">
                         <div class="col">

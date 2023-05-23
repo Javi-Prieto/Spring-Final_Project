@@ -25,18 +25,13 @@ public class HireController {
 	
 	@PostMapping("/hirePTrainer/{codTrabajador}")
 	public String submitHire(@ModelAttribute("newHire")Hire h, @AuthenticationPrincipal Client cliente, @PathVariable("codTrabajador") Long trainerId) {
-		PersonalTrainer editP = pServicio.findById(trainerId).get();
-		List<Hire> clientsList = editP.getClientes();
-		clientsList.add(h);
-		h.setTrainer(pServicio.findById(trainerId).get());
-		h.setCliente(cliente);
+		
+		h.addCliente(cliente);
+		h.addTrainer(pServicio.findById(trainerId).get());
 		h.setStartHire(LocalDate.now());
 		h.setFinishHire(h.getStartHire().plusMonths(1));
 		servicio.save(h);
-		editP.setClientes(clientsList);
-		pServicio
-			.edit(editP);
-		cliente.setHirePtrainer(h);
+		
 		
 		return "redirect:/mypage/hirereserve";
 	}

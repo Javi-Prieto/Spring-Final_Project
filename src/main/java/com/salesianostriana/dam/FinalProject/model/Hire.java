@@ -24,6 +24,7 @@ public class Hire {
 	private Long codHire;
 
 	@OneToOne
+	@JoinColumn(foreignKey = @ForeignKey(name = "fk_hire_client"))
 	private Client cliente;
 	
 	@ManyToOne
@@ -34,7 +35,23 @@ public class Hire {
 	
 	private LocalDate finishHire;
 	
+	public void addCliente(Client c) {
+		c.setHirePtrainer(this);;
+		this.cliente = c;
+	}
+	public void removeCliente(Client c) {
+		this.cliente = null;
+		c.setHirePtrainer(null);
+	}
 	
+	public void addTrainer(PersonalTrainer t) {
+		t.getClientes().add(this);
+		this.trainer = t;
+	}
+	public void removeRoom(PersonalTrainer t) {
+		this.trainer = null;
+		t.getClientes().remove(this);
+	}
 	
 	
 }

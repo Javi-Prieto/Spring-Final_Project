@@ -2,6 +2,7 @@ package com.salesianostriana.dam.FinalProject.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,8 @@ public class PTrainerController {
 	
 	@PostMapping("/admin/add/ptrainer/submit")
 	public String submitAddPtrainer(@ModelAttribute("pTrainerForm")PersonalTrainer p) {
+		Random rnd = new Random();
+		p.setValoracion(rnd.nextInt(0, 5));
 		service.save(p);
 		
 		return "redirect:/admin/ptrainerlist";

@@ -1,10 +1,13 @@
 package com.salesianostriana.dam.FinalProject.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -26,8 +29,30 @@ public class Reserve {
 	private LocalDateTime horaEntrada, horaSalida;
 	
 	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_res_client"))
 	private Client cliente;
 	
 	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_res_room"))
 	private Room room;
+	
+	public void addCliente(Client c) {
+		c.getReservas().add(this);
+		this.cliente = c;
+	}
+	public void removeCliente(Client c) {
+		this.cliente = null;
+		c.getReservas().remove(this);
+	}
+	
+	public void addRoom(Room r) {
+		r.getClients().add(this);
+		this.room = r;
+	}
+	public void removeRoom(Room r) {
+		this.room = null;
+		r.getClients().remove(this);
+	}
+	
+	
 }

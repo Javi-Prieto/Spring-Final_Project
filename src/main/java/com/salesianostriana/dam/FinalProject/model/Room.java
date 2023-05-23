@@ -43,6 +43,5 @@ public class Room {
 	@Builder.Default
 	private List<Reserve> clients = new ArrayList<>();
 	
-	/*@ManyToOne
-	private ClassTrainer ct;*/
+	
 }

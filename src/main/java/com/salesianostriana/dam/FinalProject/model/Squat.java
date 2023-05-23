@@ -34,4 +34,13 @@ public class Squat {
 	private LocalDate fecha;
 	
 	private int kgs, reps;
+	
+	public void addCliente(Client c) {
+		c.getSquatList().add(this);
+		this.clienteS = c;
+	}
+	public void removeCliente(Client c) {
+		this.clienteS = null;
+		c.getSquatList().remove(this);
+	}
 }

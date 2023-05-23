@@ -82,15 +82,7 @@ public class ClientController {
 		return "ClienteAdmin";
 	}
 	
-	@GetMapping("/reserve/delete/{idRes}")
-	public String deleteReserve(@PathVariable("idRes")long idRes, @AuthenticationPrincipal Client cliente) {
-		if(serviceR.findById(idRes).isPresent()){
-			serviceR.deleteById(idRes);
-			return "redirect:/mypage/hirereserve";
-		}else {
-			return "redirect:/mypage/hirereserve";
-		}
-	}
+	
 	
 	@GetMapping("/getPlaniPDF")
 	public String showPlani() throws Exception {

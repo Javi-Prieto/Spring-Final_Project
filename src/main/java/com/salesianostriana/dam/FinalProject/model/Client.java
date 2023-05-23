@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -47,15 +48,15 @@ public class Client implements UserDetails {
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToOne(mappedBy = "cliente", optional = true)
+	@OneToOne(mappedBy = "cliente", optional = true, cascade = CascadeType.REMOVE)
 	private Hire hirePtrainer;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy = "cliente", 
-			fetch = FetchType.EAGER
-			)
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE)
 	private List<Reserve> reservas;
 	
 	@ToString.Exclude

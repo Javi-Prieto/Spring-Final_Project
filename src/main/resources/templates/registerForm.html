@@ -123,8 +123,8 @@
                         <div class="col">
                             <label for="birth" class="col-form-label pe-1 p-0">Fecha de Nacimiento:</label>
                         </div>
-                        <div class="col">
-                            <input type="date" name="birth" id="birth" required class="form-control " th:field="*{birthDate}">
+                        <div class="col date">
+                            <input type="date" name="birth" id="birth" required class="form-control " th:field="*{birthDate}" onkeyup="validateBirth()">
                         </div>
                     </div>
                     <div id="rigPc" class="d-grid row">

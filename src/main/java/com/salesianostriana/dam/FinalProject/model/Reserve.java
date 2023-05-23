@@ -13,7 +13,9 @@ import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -30,10 +32,14 @@ public class Reserve {
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_res_client"))
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Client cliente;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_res_room"))
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Room room;
 	
 	public void addCliente(Client c) {

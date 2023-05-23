@@ -71,4 +71,17 @@ function validateBankAc(){
         document.querySelector('.subm>input').style.opacity = (1);
     }
 }
+function validateBirth(){
+    if(document.querySelector('.date>input').value >= Date.now()){
+        let alertB = document.createElement('p')
+        alertB.style.color = 'red'
+        alertB.innerHTML = 'La fecha no puede ser superior al día de hoy';
+        document.querySelector('.date').append(alertB)
+        document.querySelector('.subm>input').disabled = true;
+        document.querySelector('.subm>input').style.opacity = (0.5);
+    }else{
+        document.querySelector('.subm>input').disabled = false;
+        document.querySelector('.subm>input').style.opacity = (1);
+    }
+}
 

@@ -24,4 +24,8 @@ public class MainController {
 	public String showLogIn() {
 		return "logIn";
 	}
+	@GetMapping("/aboutUs")
+	public String showAbtUs() {
+		return "aboutUs";
+	}
 }

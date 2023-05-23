@@ -44,9 +44,7 @@ public class PTrainerController {
 	
 	@PostMapping("/admin/add/ptrainer/submit")
 	public String submitAddPtrainer(@ModelAttribute("pTrainerForm")PersonalTrainer p) {
-		Random rnd = new Random();
-		p.setValoracion(rnd.nextInt(0, 5));
-		service.save(p);
+	    service.save(p);
 		
 		return "redirect:/admin/ptrainerlist";
 	}

@@ -47,12 +47,13 @@
 				<p>Con esta reserva te autoriza el acceso a la sala de musculación en cualquier momento del dia de hoy</p>
 				<p>FECHA: <span th:text="${#temporals.format(reserve.horaEntrada, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
 				<p>VALIDO HASTA: <span th:text="${#temporals.format(reserve.horaSalida, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
-				<div class="m-auto text-center">
+				<div class="m-auto text-center pt-2">
 					<a th:href="@{/reserve/delete/{idRes}(idRes = ${reserve.idRes})}" class="btn btn-small btn-outline-warning text-center">Cancelar Reserva</a>
 				</div>
-				<div class="text-center w-100" th:unless="${reserve != null}">
+				
+			</div>
+			<div class="text-center w-100" th:unless="${reserve != null}">
 					<p class="text-center text-light">¿Hoy no entrenas? Reserva tu sala para hoy</p>
-				</div>
 			</div>
 			
 		</section>

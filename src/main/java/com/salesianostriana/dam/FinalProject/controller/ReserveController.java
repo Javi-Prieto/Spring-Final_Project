@@ -44,9 +44,13 @@ public class ReserveController {
 	public String deleteReserve(@PathVariable("idRes")long idRes, @AuthenticationPrincipal Client cliente) {
 		Optional <Reserve> reserv = service.findById(idRes);
 		if(reserv.isPresent()){
-			service.findById(idRes).get().removeCliente(cliente);
-			service.findById(idRes).get().removeRoom(service.findById(idRes).get().getRoom());
-			service.deleteById(idRes);
+			Reserve reserveToDelete = reserv.get();
+
+	        cliente.getReservas().remove(reserveToDelete);
+
+	        reserveToDelete.removeCliente(cliente);
+	        reserveToDelete.removeRoom(reserveToDelete.getRoom());
+	        service.deleteById(idRes);
 			return "redirect:/mypage/hirereserve";
 		}else {
 			return "redirect:/mypage/hirereserve";

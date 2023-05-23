@@ -1,5 +1,5 @@
-let pass = document.getElementById('passw');
-let passR = document.getElementById('passwC');
+let pass = document.querySelector('.passw>input');
+let passR = document.querySelector('.passwC>input');
 function validatePassw(){
     let passV = document.getElementById('passw').value;
     let passRV = document.getElementById('passwC').value;
@@ -31,28 +31,44 @@ showPswR.addEventListener("click", function(){
 });
 
 function validatePhone(){
-    if(!document.getElementById('numTlf').value.match(/\d\d\d-\d\d\d-\d\d\d/i)){
-        document.getElementById('alertP').style.color = 'red';
-        document.getElementById('alertP').innerHTML = 'Número de Tlfno. incorrecto';
-        document.getElementById('submitRg').disabled = true;
-        document.getElementById('submitRg').style.opacity = (0.5);
+    if(!document.querySelector('.numtlf>input').value.match(/\d\d\d-\d\d\d-\d\d\d/i)){
+        document.querySelector('.numtlf>p').style.color = 'red';
+        document.querySelector('.numtlf>p').innerHTML = 'Número de Tlfno. incorrecto';
+        document.querySelector('.subm>input').disabled = true;
+        document.querySelector('.subm>input').style.opacity = (0.5);
     }else{
-        document.getElementById('alertP').style.color = 'green';
-        document.getElementById('alertP').innerHTML = 'Número de Tlfno. correcto';
-        document.getElementById('submitRg').disabled = false;
-        document.getElementById('submitRg').style.opacity = (1);
+        document.querySelector('.numtlf>p').style.color = 'green';
+        document.querySelector('.numtlf>p').innerHTML = 'Número de Tlfno. correcto';
+        document.querySelector('.subm>input').disabled = false;
+        document.querySelector('.subm>input').style.opacity = (1);
     }
 }
 function validateDNI(){
-    if(!document.getElementById('dni').value.match(/\w\w\w\w\w\w\w\d/i)){
-        document.getElementById('alertD').style.color = 'red';
-        document.getElementById('alertD').innerHTML = 'Número de Tlfno. incorrecto';
-        document.getElementById('submitRg').disabled = true;
-        document.getElementById('submitRg').style.opacity = (0.5);
+    if(!document.querySelector('.dni>input').value.match(/\w\w\w\w\w\w\w\d/i)){
+        document.querySelector('.dni>p').style.color = 'red';
+        document.querySelector('.dni>p').innerHTML = 'DNI incorrecto';
+        document.querySelector('.subm>input').disabled = true;
+        document.querySelector('.subm>input').style.opacity = (0.5);
     }else{
-        document.getElementById('submitRg').disabled = false;
-        document.getElementById('submitRg').style.opacity = (1);
+        
+        document.querySelector('.dni>p').style.color = 'green';
+        document.querySelector('.dni>p').innerHTML = 'DNI correcto';
+        document.querySelector('.subm>input').disabled = false;
+        document.querySelector('.subm>input').style.opacity = (1);
     }
 }
-
+function validateBankAc(){
+    if(!document.querySelector('.bank>input').value.match(/\w\w\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d/i)){
+        document.querySelector('.bank>p').style.color = 'red';
+        document.querySelector('.bank>p').innerHTML = 'Cuenta del banco incorrecta';
+        document.querySelector('.subm>input').disabled = true;
+        document.querySelector('.subm>input').style.opacity = (0.5);
+    }else{
+        
+        document.querySelector('.bank>p').style.color = 'green';
+        document.querySelector('.bank>p').innerHTML = 'Cuenta del banco correcta';
+        document.querySelector('.subm>input').disabled = false;
+        document.querySelector('.subm>input').style.opacity = (1);
+    }
+}
 

@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.salesianostriana.dam.FinalProject.controller.beanS.SearchBean;
-import com.salesianostriana.dam.FinalProject.controller.beanS.SearchInt;
 import com.salesianostriana.dam.FinalProject.model.Hire;
 import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
 import com.salesianostriana.dam.FinalProject.service.PTrainerService;
@@ -74,19 +73,23 @@ public class PTrainerController {
 		return "redirect:/admin/ptrainerlist";
 	}
 	
-	@PostMapping("/ptrainer/search/name")
-	public String buscarNombre(@ModelAttribute("searchForm")SearchBean search, Model m) {
+	@GetMapping("/ptrainer/search/1")
+	public String buscarNombre(@RequestParam("nombre")String nombre, Model m) {
 		List <PersonalTrainer> newList;
-		newList = service.findByName(search.getSearch());
+		newList = service.findByName(nombre);
 		m.addAttribute("pTrainerList", newList);
+		Hire newHire = new Hire();
+		m.addAttribute("newHire", newHire);
 		return "PTrainer";
 	}
-	/*
-	@PostMapping("/ptrainer/search/val")
-	public String buscarValoracion(@ModelAttribute("searchForm")SearchInt search, Model m) {
+	
+	@GetMapping("/ptrainer/search/2")
+	public String buscarValoracion(@RequestParam("val")int val, Model m) {
 		List <PersonalTrainer> newList;
-		newList = service.findByVal(search.getSearch());
+		newList = service.findByVal(val);
 		m.addAttribute("pTrainerList", newList);
+		Hire newHire = new Hire();
+		m.addAttribute("newHire", newHire);
 		return "PTrainer";
-	}*/
+	}
 }

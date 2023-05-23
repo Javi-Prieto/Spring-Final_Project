@@ -21,7 +21,7 @@
             <h1 class="text-light pe-1 ">ENTRENADORES DE SALA</h1>
         </section>
         <section class="mt-5 " data-aos="zoom-in-up">
-            <div class="row m-auto w-75">
+            <div class="row m-auto w-75 mt-5">
 				<div th:each="trainer : ${CTrainerList}" class="ctrainer col-4 mt-1">
 					<div  class="card">
                                 <img class="card-img-top" th:src="${trainer.urlImg}" alt="Card image">

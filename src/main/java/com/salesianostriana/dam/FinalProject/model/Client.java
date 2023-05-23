@@ -45,14 +45,17 @@ public class Client implements UserDetails {
 	private LocalDate cancelDate;
 	private char gender;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToOne(mappedBy = "cliente", optional = true)
 	private Hire hirePtrainer;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToMany(
 			mappedBy = "cliente", 
 			fetch = FetchType.EAGER
-			/*cascade = CascadeType.ALL,
-			orphanRemoval = true*/)
+			)
 	private List<Reserve> reservas;
 	
 	@ToString.Exclude

@@ -10,8 +10,8 @@ import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
 
 public interface PTrainerRepository extends JpaRepository<PersonalTrainer, Long> {
 
-	List<PersonalTrainer> findByNombreContainingIgnoreCase(String nombre);
+	List<PersonalTrainer> findByNombreContainsIgnoreCase(String nombre);
 	
-	/*Query("select p from Personal_Trainer p where p.valoracion = ?1")
-	public List<PersonalTrainer> findByValoracion(int Valoracion);*/
+	@Query("select p from PersonalTrainer p where p.valoracion = ?1")
+    List<PersonalTrainer> findByValoracion(int valoracion);
 }

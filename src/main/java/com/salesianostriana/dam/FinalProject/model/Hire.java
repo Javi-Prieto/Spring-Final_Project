@@ -9,10 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -25,10 +28,14 @@ public class Hire {
 
 	@OneToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_hire_client"))
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Client cliente;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_hire_ptrainer"))
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private PersonalTrainer trainer;
 	
 	private LocalDate startHire;

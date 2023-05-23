@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.FinalProject.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.FinalProject.controller.beanS.SearchBean;
+import com.salesianostriana.dam.FinalProject.controller.beanS.SearchInt;
 import com.salesianostriana.dam.FinalProject.model.Hire;
 import com.salesianostriana.dam.FinalProject.model.PersonalTrainer;
 import com.salesianostriana.dam.FinalProject.service.PTrainerService;
@@ -70,4 +73,20 @@ public class PTrainerController {
 		service.deleteById(id);
 		return "redirect:/admin/ptrainerlist";
 	}
+	
+	@PostMapping("/ptrainer/search/name")
+	public String buscarNombre(@ModelAttribute("searchForm")SearchBean search, Model m) {
+		List <PersonalTrainer> newList;
+		newList = service.findByName(search.getSearch());
+		m.addAttribute("pTrainerList", newList);
+		return "PTrainer";
+	}
+	/*
+	@PostMapping("/ptrainer/search/val")
+	public String buscarValoracion(@ModelAttribute("searchForm")SearchInt search, Model m) {
+		List <PersonalTrainer> newList;
+		newList = service.findByVal(search.getSearch());
+		m.addAttribute("pTrainerList", newList);
+		return "PTrainer";
+	}*/
 }

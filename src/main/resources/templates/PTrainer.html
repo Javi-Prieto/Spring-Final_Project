@@ -14,20 +14,17 @@
     <nav th:replace="~{fragments/navBar::navBar}"></nav>
     <hr class="m-0"/>
     <main class="min-vh-100">
-      <form class="d-flex w-50 m-auto mt-5 mb-5" role="search">
+      <form method="post" th:action="@{/ptrainer/search/name}" th:object="${searchForm}" class="d-flex w-50 m-auto mt-5 mb-5" role="search">
         <input class="form-control me-2" type="search" placeholder="Introduce el nombre" aria-label="search">
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
 
-      <div class="w-50 m-auto" id="stars">
-          <ul class="d-flex justify-content-between p-0">
-              <li class="list-group">⭐</li>
-              <li class="list-group">⭐</li>
-              <li class="list-group">⭐</li>
-              <li class="list-group">⭐</li>
-              <li class="list-group">⭐</li>
-          </ul>
-          <input type="range" class="form-range align-middle" min="0" max="4"> 
+		<form method="post" th:action="@{/ptrainer/search/val}" th:object="${searchForm}" class="d-flex w-50 m-auto mt-5 mb-5" role="search">
+		  <input class="form-control me-2" type="number" min="0" max="5" aria-label="search">
+		  <button class="btn btn-outline-success" type="submit">⭐</button>
+		</form>
+
+
       </div>
       <h1 class="h1 text-center text-light mt-5 fw-bold">ENTRENADORES</h1>
       <div class="m-auto w-75 ">

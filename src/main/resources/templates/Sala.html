@@ -53,8 +53,8 @@
             </div>
             
         </section>
-        <!-- th:if="${#lists.size(sala.clients) => sala.limiteClientes}"-->
-        <section class="position-static m-auto text-center" id="boton"  >
+        <!--th:if="${#lists.size(listC) => sala.limiteClientes}"-->
+        <section class="position-static m-auto text-center" id="boton" >
 			<form method="post" th:object"${newReserve}" th:action="@{/reserve/submit/{codSala} (codSala = ${sala.codSala})}" sec:authorize="isAuthenticated()" >
 				<input type="hidden" th:field="*{sala.codSala}"/>
 				<button type="submit" class=" btn border-2 border border-black rounded-0 shadow" id="cont">RESERVAR</button>

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.FinalProject.model.Client;
+import com.salesianostriana.dam.FinalProject.model.Manage;
 import com.salesianostriana.dam.FinalProject.model.Reserve;
+import com.salesianostriana.dam.FinalProject.service.ManageService;
 import com.salesianostriana.dam.FinalProject.service.ReserveService;
 import com.salesianostriana.dam.FinalProject.service.RoomService;
 
@@ -24,10 +26,13 @@ public class ReserveController {
 	private ReserveService service;
 	@Autowired
 	private RoomService serviceR;
+	@Autowired
+	private ManageService serviceM;
 	
 	@PostMapping("/reserve/submit/{codSala}")
 	public String  submitReserve(@ModelAttribute("newReserve") Reserve r, @AuthenticationPrincipal Client cliente, @PathVariable("codSala") Long salaId) {
-		
+		serviceM.addManage(serviceR.findById(salaId).get(), service.findAll(), new Manage());
+			
 		if(serviceR.findById(salaId).isPresent()) {
 			r.setHoraEntrada(LocalDateTime.of(LocalDate.now(), LocalTime.of(9, 0)));
 			r.setHoraSalida(LocalDateTime.of(LocalDate.now(), LocalTime.of(22, 0)));
@@ -49,8 +54,15 @@ public class ReserveController {
 	        cliente.getReservas().remove(reserveToDelete);
 
 	        reserveToDelete.removeCliente(cliente);
-	        reserveToDelete.removeRoom(reserveToDelete.getRoom());
 	        service.deleteById(idRes);
+	        serviceM.removeManage(reserveToDelete
+	        								.getRoom(), 
+	        						service.findAll(), 
+	        						reserveToDelete
+	        								.getRoom()
+	        								.getMan());
+
+	        reserveToDelete.removeRoom(reserveToDelete.getRoom());
 			return "redirect:/mypage/hirereserve";
 		}else {
 			return "redirect:/mypage/hirereserve";

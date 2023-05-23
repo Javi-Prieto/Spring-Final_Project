@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,11 +38,13 @@ public class Room {
 	@OneToMany(
 			mappedBy="room", 
 			fetch = FetchType.EAGER
-			/*,cascade = CascadeType.ALL,
-			orphanRemoval = true*/
 			)
 	@Builder.Default
 	private List<Reserve> clients = new ArrayList<>();
 	
+	@OneToOne(mappedBy = "room")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private Manage man;
 	
 }

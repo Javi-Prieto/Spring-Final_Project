@@ -35,7 +35,7 @@ public class Manage {
 	private ClassTrainer trainer;
 	
 	@OneToOne
-	@JoinColumn(foreignKey = @ForeignKey(name="fk_res_room"))
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_man_room"))
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Room room;

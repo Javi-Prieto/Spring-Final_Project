@@ -2,6 +2,7 @@ package com.salesianostriana.dam.FinalProject.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -26,13 +27,13 @@ public class Hire {
 	@GeneratedValue
 	private Long codHire;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_hire_client"))
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Client cliente;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_hire_ptrainer"))
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
